@@ -1,0 +1,1689 @@
+/* =========================================================================
+   SMASH HOUSE — TABLE MENU STYLESHEET
+
+   Visual identity:
+   Charcoal + Orange + Warm Cream
+
+   Designed to match the main Smash House website while keeping the
+   digital menu clean, fast, modern and easy to use on mobile.
+   ========================================================================= */
+
+
+/* =========================================================================
+   1. DESIGN TOKENS
+   ========================================================================= */
+
+:root {
+
+  /* ---------- Main colours ---------- */
+
+  --charcoal-deep: #151515;
+  --charcoal: #202020;
+  --charcoal-mid: #2C2C2C;
+  --charcoal-light: #3A3A3A;
+
+  --orange-deep: #C94B00;
+  --orange: #F06400;
+  --orange-bright: #FF7A00;
+  --orange-soft: #FFB15C;
+
+  --cream: #FFF8ED;
+  --cream-dark: #F5EBDD;
+  --white: #FFFFFF;
+
+  /* ---------- Text ---------- */
+
+  --ink: #202020;
+  --ink-soft: #666666;
+  --ink-faint: #8A8A8A;
+
+  /* ---------- Borders ---------- */
+
+  --border:
+    rgba(32, 32, 32, 0.10);
+
+  --border-orange:
+    rgba(240, 100, 0, 0.28);
+
+  /* ---------- Fonts ---------- */
+
+  --font-display:
+    'Playfair Display',
+    Georgia,
+    serif;
+
+  --font-body:
+    'Poppins',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+
+  /* ---------- Radius ---------- */
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+
+  --radius-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+
+  --shadow-soft:
+    0 16px 40px -20px rgba(0, 0, 0, 0.30);
+
+  --shadow-card:
+    0 8px 22px -15px rgba(0, 0, 0, 0.22);
+
+  --shadow-orange:
+    0 10px 24px -12px rgba(240, 100, 0, 0.45);
+
+  /* ---------- Navigation ---------- */
+
+  --nav-height: 64px;
+
+  /* ---------- Motion ---------- */
+
+  --transition-fast:
+    180ms ease;
+
+  --transition-med:
+    320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+/* =========================================================================
+   2. RESET & BASE
+   ========================================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+}
+
+body {
+
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(240, 100, 0, 0.045),
+      transparent 30%
+    ),
+
+    var(--cream);
+
+  color: var(--ink);
+
+  font-family: var(--font-body);
+
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =========================================================================
+   3. HEADER
+   ========================================================================= */
+
+.site-header {
+
+  position: relative;
+
+  background:
+
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(240, 100, 0, 0.10),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      135deg,
+      var(--white),
+      var(--cream)
+    );
+
+  color: var(--charcoal-deep);
+
+  padding:
+    18px
+    18px
+    16px;
+
+  border-bottom:
+    1px solid var(--border);
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================================
+   4. HEADER INNER
+   ========================================================================= */
+
+.header-inner {
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+/* =========================================================================
+   5. RESTAURANT LOGO
+   ========================================================================= */
+
+.brand-logo {
+
+  flex-shrink: 0;
+
+  width: 76px;
+  height: 76px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--white);
+
+  overflow: hidden;
+
+  box-shadow:
+    0 7px 22px rgba(0, 0, 0, 0.10);
+}
+
+.brand-logo img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* =========================================================================
+   6. BRAND TEXT
+   ========================================================================= */
+
+.brand-copy {
+
+  min-width: 0;
+}
+
+.brand-eyebrow {
+
+  margin: 0;
+
+  font-size: 11px;
+
+  line-height: 1.2;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: var(--orange);
+
+  font-weight: 700;
+}
+
+.brand-name {
+
+  margin: 2px 0 4px;
+
+  font-family: var(--font-display);
+
+  font-weight: 800;
+
+  font-size:
+    clamp(
+      25px,
+      7vw,
+      37px
+    );
+
+  line-height: 1.05;
+
+  color: var(--charcoal-deep);
+}
+
+.brand-tagline {
+
+  margin: 0;
+
+  font-size: 12.5px;
+
+  color: var(--orange-deep);
+
+  font-weight: 600;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================================================
+   7. HOME BUTTON
+   ========================================================================= */
+
+.home-button {
+
+  margin-left: auto;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  padding:
+    9px
+    15px;
+
+  background: var(--charcoal);
+
+  color: var(--white);
+
+  border:
+    1px solid var(--charcoal);
+
+  border-radius:
+    var(--radius-pill);
+
+  text-decoration: none;
+
+  font-size: 0.84rem;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.home-button:hover {
+
+  background: var(--orange);
+
+  border-color: var(--orange);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    var(--shadow-orange);
+}
+
+.home-button:active {
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================================
+   8. MENU INTRO
+   ========================================================================= */
+
+.menu-intro {
+
+  background:
+
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(240, 100, 0, 0.20),
+      transparent 32%
+    ),
+
+    linear-gradient(
+      135deg,
+      var(--charcoal-deep),
+      var(--charcoal)
+    );
+
+  color: var(--white);
+
+  padding:
+    2.7rem
+    1.25rem
+    3rem;
+
+  text-align: center;
+}
+
+.menu-intro-inner {
+
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+.menu-kicker {
+
+  margin-bottom: 0.6rem;
+
+  color: var(--orange-soft);
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+}
+
+.menu-intro h2 {
+
+  margin:
+    0 0
+    0.65rem;
+
+  color: var(--white);
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      2rem,
+      7vw,
+      3rem
+    );
+
+  line-height: 1.08;
+}
+
+.menu-intro h2::after {
+
+  content: "";
+
+  display: block;
+
+  width: 48px;
+
+  height: 4px;
+
+  margin:
+    0.8rem
+    auto
+    0;
+
+  background: var(--orange);
+
+  border-radius: 999px;
+}
+
+.menu-intro p:last-child {
+
+  margin:
+    1rem
+    auto
+    0;
+
+  max-width: 52ch;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  font-size: 0.92rem;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================================
+   9. CATEGORY NAVIGATION
+   ========================================================================= */
+
+.category-nav {
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 50;
+
+  background:
+    rgba(
+      32,
+      32,
+      32,
+      0.97
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      240,
+      100,
+      0,
+      0.25
+    );
+
+  box-shadow:
+    0 7px 22px
+    rgba(
+      0,
+      0,
+      0,
+      0.15
+    );
+
+  backdrop-filter:
+    blur(12px);
+}
+
+.category-nav-scroll {
+
+  display: flex;
+
+  gap: 9px;
+
+  overflow-x: auto;
+
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+
+  padding:
+    10px
+    14px;
+
+  scrollbar-width: none;
+}
+
+.category-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================================
+   10. CATEGORY PILLS
+   ========================================================================= */
+
+.nav-pill {
+
+  flex-shrink: 0;
+
+  scroll-snap-align: start;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      177,
+      92,
+      0.40
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.88
+    );
+
+  font-family:
+    var(--font-body);
+
+  font-weight: 600;
+
+  font-size: 13px;
+
+  padding:
+    9px
+    16px;
+
+  border-radius:
+    var(--radius-pill);
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  min-height: 40px;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.nav-pill:hover {
+
+  background:
+    rgba(
+      240,
+      100,
+      0,
+      0.15
+    );
+
+  border-color:
+    var(--orange-soft);
+
+  color:
+    var(--white);
+}
+
+.nav-pill:active {
+
+  transform:
+    scale(0.97);
+}
+
+.nav-pill.active {
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--orange-bright),
+      var(--orange)
+    );
+
+  border-color:
+    var(--orange-bright);
+
+  color:
+    var(--white);
+
+  box-shadow:
+    var(--shadow-orange);
+}
+
+.nav-pill:focus-visible {
+
+  outline:
+    3px solid
+    var(--orange-soft);
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================================
+   11. MENU CONTENT
+   ========================================================================= */
+
+.menu-content {
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding:
+    10px
+    16px
+    42px;
+}
+
+
+/* =========================================================================
+   12. CATEGORY SECTION
+   ========================================================================= */
+
+.category-section {
+
+  position: relative;
+
+  background:
+    var(--white);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    var(--radius-lg);
+
+  padding:
+    36px
+    18px
+    24px;
+
+  margin-top: 44px;
+
+  box-shadow:
+    var(--shadow-card);
+
+  scroll-margin-top:
+    calc(
+      var(--nav-height)
+      + 18px
+    );
+}
+
+.category-section:first-child {
+
+  margin-top: 28px;
+}
+
+
+/* =========================================================================
+   13. CATEGORY HEADING
+   ========================================================================= */
+
+.category-heading {
+
+  position: absolute;
+
+  top: -19px;
+
+  left: 18px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  font-family:
+    var(--font-body);
+
+  font-weight: 800;
+
+  font-size: 15px;
+
+  letter-spacing: 0.6px;
+
+  text-transform: uppercase;
+
+  color:
+    var(--white);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--orange-bright),
+      var(--orange-deep)
+    );
+
+  padding:
+    9px
+    20px;
+
+  border-radius:
+    var(--radius-pill);
+
+  margin: 0;
+
+  box-shadow:
+    var(--shadow-orange);
+}
+
+.category-heading::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 2px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  border-radius:
+    var(--radius-pill);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================================
+   14. CATEGORY NOTE
+   ========================================================================= */
+
+.category-note {
+
+  margin:
+    0
+    2px
+    5px;
+
+  font-size: 12.5px;
+
+  color:
+    var(--ink-soft);
+
+  font-style: italic;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================================
+   15. MENU ITEMS
+   ========================================================================= */
+
+.item-list {
+
+  margin-top: 16px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.menu-item {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 14px;
+
+  background:
+    var(--cream);
+
+  border:
+    1px solid
+    rgba(
+      32,
+      32,
+      32,
+      0.07
+    );
+
+  border-radius:
+    var(--radius-md);
+
+  padding:
+    14px
+    16px
+    14px
+    20px;
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.menu-item::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 8px;
+
+  bottom: 8px;
+
+  left: 0;
+
+  width: 4px;
+
+  border-radius:
+    0 4px 4px 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--orange-bright),
+      var(--orange-deep)
+    );
+}
+
+.menu-item:hover {
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    var(--border-orange);
+
+  box-shadow:
+    var(--shadow-card);
+}
+
+.menu-item-info {
+
+  min-width: 0;
+
+  flex:
+    1 1 200px;
+}
+
+.menu-item-name {
+
+  margin: 0;
+
+  font-family:
+    var(--font-body);
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  color:
+    var(--charcoal-deep);
+
+  line-height: 1.4;
+}
+
+.menu-item-desc {
+
+  margin:
+    5px
+    0
+    0;
+
+  font-size: 12.5px;
+
+  color:
+    var(--ink-soft);
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================================
+   16. MENU ITEM PRICE
+   ========================================================================= */
+
+.menu-item {
+
+  flex-wrap: wrap;
+}
+
+.menu-item-price,
+.menu-item-price--dual {
+
+  flex:
+    0 0 auto;
+
+  margin-left: auto;
+}
+
+.menu-item-price {
+
+  font-family:
+    var(--font-display);
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  color:
+    var(--orange-deep);
+
+  white-space: nowrap;
+
+  padding:
+    5px
+    11px;
+
+  background:
+    #FFF1E2;
+
+  border:
+    1px solid
+    rgba(
+      240,
+      100,
+      0,
+      0.20
+    );
+
+  border-radius:
+    var(--radius-sm);
+}
+
+
+/* =========================================================================
+   17. DUAL PRICES
+   ========================================================================= */
+
+.menu-item-price--dual {
+
+  display: flex;
+
+  gap: 8px;
+
+  background: none;
+
+  padding: 0;
+}
+
+.price-option {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 2px;
+
+  background:
+    #FFF1E2;
+
+  border:
+    1px solid
+    rgba(
+      240,
+      100,
+      0,
+      0.20
+    );
+
+  border-radius:
+    var(--radius-sm);
+
+  padding:
+    5px
+    10px;
+}
+
+.price-option-label {
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+
+  color:
+    var(--ink-faint);
+
+  font-weight: 700;
+}
+
+.price-option-value {
+
+  font-family:
+    var(--font-display);
+
+  font-weight: 700;
+
+  font-size: 14px;
+
+  color:
+    var(--orange-deep);
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================================
+   18. ORDER CTA
+   ========================================================================= */
+
+.menu-order-cta {
+
+  padding:
+    3rem
+    1.25rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cream-dark),
+      var(--cream)
+    );
+
+  text-align: center;
+}
+
+.menu-order-cta-inner {
+
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  background:
+    var(--charcoal);
+
+  border-radius:
+    var(--radius-lg);
+
+  padding:
+    2.3rem
+    1.5rem;
+
+  box-shadow:
+    var(--shadow-soft);
+}
+
+.menu-order-kicker {
+
+  margin-bottom: 0.5rem;
+
+  color:
+    var(--orange-soft);
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+.menu-order-cta h2 {
+
+  margin:
+    0 0
+    0.5rem;
+
+  color:
+    var(--white);
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(
+      1.8rem,
+      6vw,
+      2.5rem
+    );
+}
+
+.menu-order-cta p:not(.menu-order-kicker) {
+
+  margin:
+    0
+    auto
+    1.25rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.68
+    );
+
+  font-size:
+    0.9rem;
+}
+
+.menu-order-button {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    0.85rem
+    1.7rem;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--orange-bright),
+      var(--orange)
+    );
+
+  color:
+    var(--white);
+
+  font-weight:
+    700;
+
+  font-size:
+    0.9rem;
+
+  box-shadow:
+    var(--shadow-orange);
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.menu-order-button:hover {
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 30px -12px
+    rgba(
+      240,
+      100,
+      0,
+      0.55
+    );
+}
+
+
+/* =========================================================================
+   19. FOOTER
+   ========================================================================= */
+
+.site-footer {
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--charcoal),
+      var(--charcoal-deep)
+    );
+
+  color:
+    var(--white);
+
+  padding:
+    34px
+    20px
+    22px;
+
+  border-top:
+    1px solid
+    rgba(
+      240,
+      100,
+      0,
+      0.20
+    );
+}
+
+.footer-inner {
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 20px;
+
+  text-align: center;
+}
+
+.footer-name {
+
+  margin:
+    0
+    0
+    4px;
+
+  font-family:
+    var(--font-display);
+
+  font-weight:
+    800;
+
+  font-size:
+    21px;
+
+  color:
+    var(--white);
+}
+
+.footer-tagline {
+
+  margin: 0;
+
+  font-size:
+    13px;
+
+  color:
+    var(--orange-soft);
+
+  font-style:
+    italic;
+}
+
+.footer-details p {
+
+  margin:
+    0
+    0
+    5px;
+
+  font-size:
+    12.5px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.70
+    );
+
+  line-height:
+    1.6;
+}
+
+.footer-details a {
+
+  color:
+    var(--white);
+
+  font-weight:
+    600;
+}
+
+.footer-details a:hover {
+
+  color:
+    var(--orange-bright);
+}
+
+.footer-copyright {
+
+  max-width:
+    900px;
+
+  margin:
+    26px
+    auto
+    0;
+
+  padding-top:
+    16px;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.10
+    );
+
+  font-size:
+    11.5px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.45
+    );
+
+  text-align:
+    center;
+}
+
+
+/* =========================================================================
+   20. NARROW PHONES
+   ========================================================================= */
+
+@media (max-width: 480px) {
+
+  .site-header {
+
+    padding:
+      14px
+      13px;
+  }
+
+  .header-inner {
+
+    gap:
+      11px;
+  }
+
+  .brand-logo {
+
+    width:
+      62px;
+
+    height:
+      62px;
+  }
+
+  .brand-eyebrow {
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      2px;
+  }
+
+  .brand-name {
+
+    font-size:
+      24px;
+  }
+
+  .brand-tagline {
+
+    font-size:
+      11px;
+  }
+
+  .home-button {
+
+    padding:
+      8px
+      11px;
+
+    font-size:
+      0.76rem;
+  }
+
+  .menu-intro {
+
+    padding:
+      2.3rem
+      1rem
+      2.5rem;
+  }
+
+  .category-section {
+
+    padding:
+      34px
+      13px
+      20px;
+  }
+
+  .menu-item {
+
+    padding:
+      12px
+      13px
+      12px
+      18px;
+
+    gap:
+      9px;
+  }
+
+  .menu-item-name {
+
+    font-size:
+      14px;
+  }
+
+  .menu-item-desc {
+
+    font-size:
+      12px;
+  }
+
+  .menu-item-price--dual {
+
+    flex-basis:
+      100%;
+
+    justify-content:
+      flex-start;
+
+    margin-top:
+      5px;
+
+    margin-left:
+      0;
+  }
+
+  .menu-order-cta-inner {
+
+    padding:
+      2rem
+      1.1rem;
+  }
+
+}
+
+
+/* =========================================================================
+   21. VERY SMALL PHONES
+   ========================================================================= */
+
+@media (max-width: 380px) {
+
+  .menu-content {
+
+    padding-left:
+      12px;
+
+    padding-right:
+      12px;
+  }
+
+  .category-heading {
+
+    left:
+      14px;
+
+    font-size:
+      13px;
+
+    padding:
+      8px
+      16px;
+  }
+
+  .menu-item-price {
+
+    font-size:
+      14px;
+  }
+
+  .price-option-value {
+
+    font-size:
+      13px;
+  }
+
+}
+
+
+/* =========================================================================
+   22. TABLET
+   ========================================================================= */
+
+@media (min-width: 700px) {
+
+  .header-inner {
+
+    gap:
+      20px;
+  }
+
+  .brand-logo {
+
+    width:
+      88px;
+
+    height:
+      88px;
+  }
+
+  .category-nav-scroll {
+
+    justify-content:
+      center;
+
+    flex-wrap:
+      nowrap;
+  }
+
+  .item-list {
+
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+
+    gap:
+      12px
+      16px;
+  }
+
+  /* Keep large platters visually spacious */
+
+  .platters .item-list,
+  #platters .item-list {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .footer-inner {
+
+    grid-template-columns:
+      1.2fr
+      1fr;
+
+    text-align:
+      left;
+  }
+
+}
+
+
+/* =========================================================================
+   23. DESKTOP
+   ========================================================================= */
+
+@media (min-width: 1000px) {
+
+  .menu-content {
+
+    padding-left:
+      0;
+
+    padding-right:
+      0;
+  }
+
+  .category-section {
+
+    padding-left:
+      22px;
+
+    padding-right:
+      22px;
+  }
+
+}
+
+
+/* =========================================================================
+   24. KEEP PLATTERS IN ONE COLUMN
+   ========================================================================= */
+
+#platters .item-list {
+
+  grid-template-columns:
+    1fr !important;
+}
+
+
+/* =========================================================================
+   25. ACCESSIBILITY
+   ========================================================================= */
+
+.home-button:focus-visible,
+.nav-pill:focus-visible,
+.menu-order-button:focus-visible {
+
+  outline:
+    3px solid
+    var(--orange-soft);
+
+  outline-offset:
+    3px;
+}
+
+
+/* =========================================================================
+   26. TEXT SELECTION
+   ========================================================================= */
+
+::selection {
+
+  background:
+    var(--orange);
+
+  color:
+    var(--white);
+}
