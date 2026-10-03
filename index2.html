@@ -62,7 +62,7 @@
     </h1>
 
     <p class="brand-tagline">
-      Big flavour. Fresh ingredients. Made to order.
+      Every taste is a hit.
     </p>
 
   </div>
@@ -73,7 +73,7 @@
     class="home-button"
     aria-label="Go to home page"
   >
-    Home
+    🏠 Home
   </a>
 
 </div>
@@ -155,38 +155,28 @@
 
   </footer>
 
+ 
   <!-- =========================================================
-       CART FLOATING BUTTON
+       CART: FLOATING BUTTON
        ========================================================= -->
 
-<button
-id="cart-toggle-btn"
-class="cart-fab"
-type="button"
-aria-label="Open cart, 0 items"
-
-
-
-<span class="cart-fab-icon">
-  🛒
-</span>
-
-<span>
-  Cart
-</span>
-
-<span
-  id="cart-count"
-  class="cart-fab-count"
-  aria-hidden="true"
->
-  0
-</span>
-
+  <button
+    id="cart-toggle-btn"
+    class="cart-fab"
+    type="button"
+    aria-label="Open cart, 0 items"
+  >
+    🛒 Cart
+    <span
+      id="cart-count"
+      class="cart-fab-count"
+      aria-hidden="true"
+    >0</span>
   </button>
 
+
   <!-- =========================================================
-       CART OVERLAY
+       CART: OVERLAY
        ========================================================= -->
 
   <div
@@ -195,8 +185,9 @@ aria-label="Open cart, 0 items"
     hidden
   ></div>
 
+
   <!-- =========================================================
-       CART DRAWER
+       CART: DRAWER
        ========================================================= -->
 
   <aside
@@ -208,277 +199,248 @@ aria-label="Open cart, 0 items"
     hidden
   >
 
-<!-- Cart Header -->
+    <!-- Cart Header -->
+    <div class="cart-drawer-header">
 
-<div class="cart-drawer-header">
+      <h2 id="cart-drawer-title">
+        🛒 Your Order
+      </h2>
 
-  <div>
-
-    <p class="cart-eyebrow">
-      SMASH HOUSE
-    </p>
-
-    <h2 id="cart-drawer-title">
-      Your Order
-    </h2>
-
-  </div>
-
-  <button
-    id="cart-close-btn"
-    class="cart-close-btn"
-    type="button"
-    aria-label="Close cart"
-  >
-    ✕
-  </button>
-
-</div>
-
-
-<!-- =======================================================
-     CART ITEMS
-     ======================================================= -->
-
-<div
-  id="cart-items"
-  class="cart-items"
-></div>
-
-
-<!-- Empty Cart -->
-
-<div
-  id="cart-empty"
-  class="cart-empty"
-  hidden
->
-
-  <div class="cart-empty-icon">
-    🛒
-  </div>
-
-  <h3>
-    Your cart is empty
-  </h3>
-
-  <p>
-    Add something delicious from the menu.
-  </p>
-
-  <button
-    id="cart-browse-btn"
-    class="cart-browse-btn"
-    type="button"
-  >
-    Browse Menu
-  </button>
-
-</div>
-
-
-<!-- =======================================================
-     CART FOOTER
-     ======================================================= -->
-
-<div
-  id="cart-footer"
-  class="cart-footer"
-  hidden
->
-
-  <!-- =====================================================
-       ORDER DETAILS
-       ===================================================== -->
-
-  <div class="order-details-box">
-
-    <div class="checkout-heading">
-
-      <span class="checkout-heading-icon">
-        📦
-      </span>
-
-      <div>
-
-        <h3>
-          Order Details
-        </h3>
-
-        <p>
-          Choose how you'd like to receive your order.
-        </p>
-
-      </div>
+      <button
+        id="cart-close-btn"
+        class="cart-close-btn"
+        type="button"
+        aria-label="Close cart"
+      >
+        ✕
+      </button>
 
     </div>
 
 
-    <!-- =================================================
-         ORDER TYPE
-         ================================================= -->
-
-    <div class="order-type-group">
-
-      <p class="order-type-label">
-        Order method
-      </p>
-
-      <div
-        class="order-type-options"
-        id="order-type-options"
-        role="radiogroup"
-        aria-label="Order type"
-      >
-
-        <!-- Delivery -->
-
-        <button
-          type="button"
-          class="order-type-btn order-type-btn--delivery"
-          data-type="delivery"
-          role="radio"
-          aria-checked="false"
-        >
-
-          <span class="order-type-icon">
-            🛵
-          </span>
-
-          <span class="order-type-text">
-            Delivery
-          </span>
-
-          <span class="order-type-small">
-            Delivered to you
-          </span>
-
-        </button>
-
-
-        <!-- Pickup -->
-
-        <button
-          type="button"
-          class="order-type-btn order-type-btn--pickup"
-          data-type="pickup"
-          role="radio"
-          aria-checked="false"
-        >
-
-          <span class="order-type-icon">
-            🥡
-          </span>
-
-          <span class="order-type-text">
-            Pickup
-          </span>
-
-          <span class="order-type-small">
-            Collect your order
-          </span>
-
-        </button>
-
-      </div>
-
-
-      <p
-        class="order-type-hint"
-        id="order-type-hint"
-      >
-        Select Delivery or Pickup to continue.
-      </p>
-
-    </div>
-
-
-    <!-- Divider -->
-
+    <!-- Cart Items -->
     <div
-      class="order-details-divider"
-      aria-hidden="true"
+      id="cart-items"
+      class="cart-items"
     ></div>
 
 
-    <!-- =================================================
-         CUSTOMER INFORMATION
-         ================================================= -->
-
+    <!-- Empty Cart -->
     <div
-      class="cart-customer-fields"
-      id="cart-customer-fields"
+      id="cart-empty"
+      class="cart-empty"
       hidden
     >
 
-      <!-- Name -->
+      <p>
+        Your cart is empty
+      </p>
 
-      <div class="input-group">
-
-        <label
-          for="customer-name"
-          class="cart-input-label"
-        >
-          Your name
-        </label>
-
-        <input
-          type="text"
-          id="customer-name"
-          class="cart-input"
-          placeholder="Enter your name"
-          autocomplete="name"
-          hidden
-        />
-
-      </div>
-
-
-      <!-- Phone -->
-
-      <div class="input-group">
-
-        <label
-          for="customer-contact"
-          class="cart-input-label"
-        >
-          Phone number
-        </label>
-
-        <input
-          type="tel"
-          id="customer-contact"
-          class="cart-input"
-          placeholder="Enter your phone number"
-          autocomplete="tel"
-          hidden
-        />
-
-      </div>
-
-
-      <!-- Delivery Area -->
-
-      <div
-        class="cart-delivery-area-wrap"
-        id="delivery-area-wrap"
-        hidden
+      <button
+        id="cart-browse-btn"
+        class="cart-browse-btn"
+        type="button"
       >
+        Browse Menu
+      </button>
 
-        <label
-          for="delivery-area"
-          class="cart-input-label"
+    </div>
+
+
+    <!-- =======================================================
+         CART FOOTER / ORDER DETAILS
+         ======================================================= -->
+
+    <div
+      id="cart-footer"
+      class="cart-footer"
+      hidden
+    >
+
+      <div class="order-details-box">
+
+        <!-- =================================================
+             ORDER TYPE
+             Only Delivery and Pickup
+             ================================================= -->
+
+        <div class="order-type-group">
+
+          <p class="order-type-label">
+            <span
+              class="order-type-label-dot"
+              aria-hidden="true"
+            ></span>
+
+            How would you like your order?
+          </p>
+
+
+          <div
+            class="order-type-options"
+            id="order-type-options"
+            role="radiogroup"
+            aria-label="Order type"
+          >
+
+            <!-- DELIVERY -->
+            <button
+              type="button"
+              class="order-type-btn order-type-btn--delivery"
+              data-type="delivery"
+              role="radio"
+              aria-checked="false"
+            >
+
+              <span
+                class="order-type-icon"
+                aria-hidden="true"
+              >
+                🛵
+              </span>
+
+              <span class="order-type-text">
+                Delivery
+              </span>
+
+            </button>
+
+
+            <!-- PICKUP -->
+            <button
+              type="button"
+              class="order-type-btn order-type-btn--pickup"
+              data-type="pickup"
+              role="radio"
+              aria-checked="false"
+            >
+
+              <span
+                class="order-type-icon"
+                aria-hidden="true"
+              >
+                🥡
+              </span>
+
+              <span class="order-type-text">
+                Pickup
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <p
+            class="order-type-hint"
+            id="order-type-hint"
+          >
+            Select Delivery or Pickup to continue.
+          </p>
+
+        </div>
+
+
+        <!-- Divider -->
+        <div
+          class="order-details-divider"
+          aria-hidden="true"
+        ></div>
+
+
+        <!-- =================================================
+             CUSTOMER FIELDS
+             ================================================= -->
+
+        <div
+          class="cart-customer-fields"
+          id="cart-customer-fields"
+          hidden
         >
-          Delivery area
-        </label>
 
-        <select
-          id="delivery-area"
-          class="cart-input cart-select"
-        >
+          <!-- Customer Name -->
+          <input
+            type="text"
+            id="customer-name"
+            class="cart-input"
+            placeholder="Your name *"
+            aria-label="Your name (required)"
+            hidden
+          />
 
-          <option value="">
-            Select delivery area
-          </option>
 
-          <option value="Banga">
+          <!-- Phone Number -->
+          <input
+            type="tel"
+            id="customer-contact"
+            class="cart-input"
+            placeholder="Phone number *"
+            aria-label="Phone number (required)"
+            hidden
+          />
+
+
+          <!-- Delivery Address -->
+          <input
+            type="text"
+            id="customer-address"
+            class="cart-input"
+            placeholder="Delivery address *"
+            aria-label="Delivery address (required)"
+            hidden
+          />
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           TOTAL
+           ================================================= -->
+
+      <div class="cart-total-row">
+
+        <span>
+          Total
+        </span>
+
+        <span id="cart-total-value">
+          TSh 0/=
+        </span>
+
+      </div>
+
+
+      <!-- =================================================
+           WHATSAPP ORDER BUTTON
+           ================================================= -->
+
+      <button
+        id="whatsapp-order-btn"
+        class="whatsapp-btn"
+        type="button"
+        disabled
+      >
+        📲 Order via WhatsApp
+      </button>
+
+
+      <p class="whatsapp-hint">
+        This opens WhatsApp with your order filled in — tap Send there to
+        confirm it.
+      </p>
+
+
+      <!-- Clear Cart -->
+      <button
+        id="clear-cart-btn"
+        class="clear-cart-btn"
+        type="button"
+      >
+        Clear Cart
+      </button>
+
+    </div>
+
+  </aside>
