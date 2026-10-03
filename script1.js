@@ -1,4 +1,3 @@
-
 /* =========================================================================
    DIGITAL MENU (display only)
    All menu content lives in MENU_DATA below. To update prices or items,
@@ -8,7 +7,6 @@
    Optional fields:
    - desc:   small text under an item
    - note:   text under a category title
-   - addOns: extras shown under that category's items (e.g. burgers)
    ========================================================================= */
 
 const MENU_DATA = [
@@ -23,11 +21,9 @@ const MENU_DATA = [
       { name: "Grilled Chicken Burger", price: 12000, desc: "Boneless Grilled Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
       { name: "Caramelized Burger", price: 14000, desc: "Beef Patty, Caramelized Onions, Cheddar Cheese, Tomato, Smash Sauce" },
       { name: "Cheese Burger", price: 12000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
-      { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" }
-    ],
-    addOns: [
-      { name: "Beef Patty", price: 4000 },
-      { name: "Cheese", price: 2000 }
+      { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
+      { name: "Add-on: Beef Patty", price: 4000 },
+      { name: "Add-on: Cheese", price: 2000 }
     ]
   },
 
@@ -200,151 +196,3 @@ const MENU_DATA = [
     ]
   }
 ];
-
-
-/* ---------- Helpers ---------- */
-
-function formatPrice(n) {
-  return "TSh " + n.toLocaleString("en-US") + "/=";
-}
-
-function el(tag, className, html) {
-  const e = document.createElement(tag);
-  if (className) e.className = className;
-  if (html !== undefined) e.innerHTML = html;
-  return e;
-}
-
-/* ---------- Render category navigation ---------- */
-
-function renderNav() {
-  const nav = document.getElementById("category-nav");
-  MENU_DATA.forEach((cat) => {
-    const btn = el("button", "nav-pill");
-    btn.type = "button";
-    btn.textContent = cat.name;
-    btn.dataset.target = cat.id;
-    btn.setAttribute("role", "tab");
-    btn.setAttribute("aria-selected", "false");
-    btn.addEventListener("click", () => {
-      const target = document.getElementById(cat.id);
-      if (!target) return;
-      const headerOffset = document.querySelector(".category-nav").offsetHeight + 12;
-      const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top, behavior: "smooth" });
-    });
-    nav.appendChild(btn);
-  });
-}
-
-/* ---------- Render menu sections ---------- */
-
-function renderMenu() {
-  const main = document.getElementById("menu-content");
-
-  MENU_DATA.forEach((cat) => {
-    const section = el("section", "category-section");
-    section.id = cat.id;
-    section.setAttribute("aria-labelledby", cat.id + "-heading");
-
-    const heading = el("h2", "category-heading");
-    heading.id = cat.id + "-heading";
-    heading.textContent = cat.name;
-    section.appendChild(heading);
-
-    if (cat.note) {
-      section.appendChild(el("p", "category-note", cat.note));
-    }
-
-    const list = el("div", "item-list");
-
-    cat.items.forEach((item) => {
-      const row = el("article", "menu-item");
-
-      const info = el("div", "menu-item-info");
-      info.appendChild(el("h3", "menu-item-name", item.name));
-      if (item.desc) {
-        info.appendChild(el("p", "menu-item-desc", item.desc));
-      }
-      row.appendChild(info);
-
-      if (cat.sizeLabels) {
-        const priceWrap = el("div", "menu-item-price menu-item-price--dual");
-        const small = el("div", "price-option");
-        small.innerHTML =
-          '<span class="price-option-label">' +
-          cat.sizeLabels[0] +
-          '</span><span class="price-option-value">' +
-          formatPrice(item.small) +
-          "</span>";
-        const large = el("div", "price-option");
-        large.innerHTML =
-          '<span class="price-option-label">' +
-          cat.sizeLabels[1] +
-          '</span><span class="price-option-value">' +
-          formatPrice(item.large) +
-          "</span>";
-        priceWrap.appendChild(small);
-        priceWrap.appendChild(large);
-        row.appendChild(priceWrap);
-      } else {
-        const price = el("div", "menu-item-price", formatPrice(item.price));
-        row.appendChild(price);
-      }
-
-      list.appendChild(row);
-    });
-
-    section.appendChild(list);
-    main.appendChild(section);
-  });
-}
-
-/* ---------- Active category highlighting on scroll ---------- */
-
-function setupActiveTracking() {
-  const pills = Array.from(document.querySelectorAll(".nav-pill"));
-  const sections = MENU_DATA.map((c) => document.getElementById(c.id));
-  const navEl = document.querySelector(".category-nav");
-
-  function setActive(id) {
-    pills.forEach((p) => {
-      const isActive = p.dataset.target === id;
-      p.classList.toggle("active", isActive);
-      p.setAttribute("aria-selected", isActive ? "true" : "false");
-      if (isActive) {
-        p.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-      }
-    });
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActive(entry.target.id);
-        }
-      });
-    },
-    {
-      root: null,
-      rootMargin: `-${navEl.offsetHeight + 20}px 0px -70% 0px`,
-      threshold: 0,
-    }
-  );
-
-  sections.forEach((s) => s && observer.observe(s));
-
-  // Set initial active state
-  if (sections[0]) setActive(sections[0].id);
-}
-
-/* ---------- Init ---------- */
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderNav();
-  renderMenu();
-  setupActiveTracking();
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-});
