@@ -141,7 +141,7 @@ a {
     radial-gradient(circle at 15% 20%, rgba(240, 100, 0, 0.10), transparent 35%),
     linear-gradient(135deg, var(--white), var(--cream));
   color: var(--charcoal-deep);
-  padding: 20px 18px 18px;
+  padding: 18px 18px 16px;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
   overflow: hidden;
@@ -173,8 +173,8 @@ a {
 
 .brand-logo {
   flex: 0 0 auto;
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,21 +202,21 @@ a {
 }
 
 .brand-name {
-  margin: 0;
+  margin: 2px 0 4px;
   font-family: var(--font-display);
-  font-size: clamp(32px, 9vw, 48px);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0.5px;
+  font-size: clamp(25px, 7vw, 37px);
+  font-weight: 800;
+  line-height: 1.05;
   color: var(--charcoal-deep);
 }
 
 .brand-tagline {
-  margin: 7px 0 0;
-  font-size: 11.5px;
+  margin: 0;
+  font-size: 12.5px;
   line-height: 1.4;
   color: var(--orange-deep);
   font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 
@@ -229,14 +229,16 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 15px;
+  gap: 6px;
+  padding: 9px 15px;
   border-radius: var(--radius-pill);
   background: var(--charcoal);
   border: 1px solid var(--charcoal);
   color: var(--white);
   text-decoration: none;
-  font-size: 12px;
+  font-size: 0.84rem;
   font-weight: 700;
+  white-space: nowrap;
   transition:
     transform var(--transition-fast),
     background var(--transition-fast),
@@ -1351,36 +1353,50 @@ body.cart-open {
 
 
 /* =========================================================================
-   29. SMALL PHONES
+   28b. NARROW PHONES — HEADER (matches table menu)
    ========================================================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 480px) {
 
   .site-header {
-    padding: 16px 13px;
+    padding: 14px 13px;
   }
 
   .header-inner {
-    gap: 10px;
+    gap: 11px;
   }
 
   .brand-logo {
-    width: 58px;
-    height: 58px;
+    width: 62px;
+    height: 62px;
+  }
+
+  .brand-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
   }
 
   .brand-name {
-    font-size: 29px;
+    font-size: 24px;
   }
 
   .brand-tagline {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .home-button {
     padding: 8px 11px;
-    font-size: 10px;
+    font-size: 0.76rem;
   }
+
+}
+
+
+/* =========================================================================
+   29. SMALL PHONES
+   ========================================================================= */
+
+@media (max-width: 380px) {
 
   .menu-content {
     padding-left: 12px;
@@ -1489,11 +1505,11 @@ textarea:focus-visible {
   color: var(--white) !important;
 }
 
-/* Floating cart: anchored bottom-left */
+/* Floating cart: anchored bottom-right */
 .cart-fab {
   position: fixed !important;
-  left: max(16px, env(safe-area-inset-left)) !important;
-  right: auto !important;
+  right: max(16px, env(safe-area-inset-right)) !important;
+  left: auto !important;
   bottom: max(16px, env(safe-area-inset-bottom)) !important;
   z-index: 80;
   background: linear-gradient(135deg, var(--orange), var(--orange-deep)) !important;
@@ -1513,8 +1529,8 @@ textarea:focus-visible {
 
 @media (max-width: 480px) {
   .cart-fab {
-    left: max(12px, env(safe-area-inset-left)) !important;
-    right: auto !important;
+    right: max(12px, env(safe-area-inset-right)) !important;
+    left: auto !important;
     bottom: max(12px, env(safe-area-inset-bottom)) !important;
     padding: 10px 14px;
     font-size: 12px;
