@@ -577,66 +577,160 @@ a {
   grid-template-columns: 1fr !important;
 }
 
-
 /* =========================================================================
-   13. FOOTER
+   19. FOOTER
    ========================================================================= */
 
 .site-footer {
-  background: linear-gradient(180deg, var(--charcoal), var(--charcoal-deep));
-  color: var(--white);
-  padding: 38px 20px 24px;
-  border-top: 1px solid rgba(240, 100, 0, 0.20);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--charcoal),
+      var(--charcoal-deep)
+    );
+
+  color:
+    var(--white);
+
+  padding:
+    34px
+    20px
+    22px;
+
+  border-top:
+    1px solid
+    rgba(
+      240,
+      100,
+      0,
+      0.20
+    );
 }
 
 .footer-inner {
-  max-width: 1000px;
+
+  max-width: 900px;
+
   margin: 0 auto;
+
   display: grid;
-  gap: 26px;
+
+  grid-template-columns: 1fr;
+
+  gap: 20px;
+
+  text-align: center;
 }
 
-.footer-brand h2 {
-  margin: 0 0 5px;
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  color: var(--white);
+.footer-name {
+
+  margin:
+    0
+    0
+    4px;
+
+  font-family:
+    var(--font-display);
+
+  font-weight:
+    800;
+
+  font-size:
+    21px;
+
+  color:
+    var(--white);
 }
 
-.footer-brand p {
+.footer-tagline {
+
   margin: 0;
-  color: var(--orange-soft);
-  font-size: 12.5px;
-  font-style: italic;
+
+  font-size:
+    13px;
+
+  color:
+    var(--orange-soft);
+
+  font-style:
+    italic;
 }
 
-.footer-info h3 {
-  margin: 0 0 6px;
-  color: var(--orange-soft);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.footer-details p {
+
+  margin:
+    0
+    0
+    5px;
+
+  font-size:
+    12.5px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.70
+    );
+
+  line-height:
+    1.6;
 }
 
-.footer-info p {
-  max-width: 400px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.70);
-  font-size: 12.5px;
-  line-height: 1.6;
+.footer-details a {
+
+  color:
+    var(--white);
+
+  font-weight:
+    600;
+}
+
+.footer-details a:hover {
+
+  color:
+    var(--orange-bright);
 }
 
 .footer-copyright {
-  max-width: 1000px;
-  margin: 28px auto 0;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
-  text-align: center;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 10.5px;
+
+  max-width:
+    900px;
+
+  margin:
+    26px
+    auto
+    0;
+
+  padding-top:
+    16px;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.10
+    );
+
+  font-size:
+    11.5px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.45
+    );
+
+  text-align:
+    center;
 }
+
 
 
 /* =========================================================================
