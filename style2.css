@@ -1528,8 +1528,7 @@ cursor: pointer;
 
 .cart-textarea {
 min-height: 76px;
-
-resize: vertical;
+resize: none;
 line-height: 1.45;
 }
 
@@ -1675,11 +1674,11 @@ padding-right: 0;
 .item-list {
 display: grid;
 
-```
+
 grid-template-columns: repeat(2, 1fr);
 
 gap: 12px;
-```
+
 
 }
 
@@ -1699,7 +1698,7 @@ left: 50%;
 right: auto;
 bottom: 50%;
 
-```
+
 width: 440px;
 max-width: calc(100vw - 40px);
 
@@ -1862,12 +1861,3 @@ scroll-behavior: auto !important;
 
 }
 
-/* ================================================================
-42. TEXT SELECTION
-================================================================ */
-
-::selection {
-background: var(--red);
-color: var(--white);
-resize:none;
-}
