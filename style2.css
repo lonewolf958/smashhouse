@@ -2557,3 +2557,68 @@ textarea:focus-visible {
   }
 
 }
+/* ================================================================
+   FINAL FIXES — CART BUTTONS
+   Keep these overrides at the end so they win over earlier rules.
+   ================================================================ */
+
+/* Clearly visible, filled orange Add to Cart buttons */
+.add-cart-btn,
+.add-to-cart-btn {
+  background: var(--red) !important;
+  border: 1.5px solid var(--red) !important;
+  color: var(--white) !important;
+  box-shadow: 0 3px 10px rgba(201, 75, 0, 0.18);
+}
+
+.add-cart-btn:hover,
+.add-to-cart-btn:hover {
+  background: var(--red-dark) !important;
+  border-color: var(--red-dark) !important;
+  color: var(--white) !important;
+}
+
+.add-cart-btn:focus-visible,
+.add-to-cart-btn:focus-visible {
+  outline: 3px solid var(--yellow-light);
+  outline-offset: 3px;
+}
+
+.add-cart-btn.added,
+.add-to-cart-btn.added {
+  background: var(--yellow) !important;
+  border-color: var(--yellow-dark) !important;
+  color: var(--black) !important;
+}
+
+/* Floating cart: anchor to the bottom-left, not the bottom-right */
+.cart-fab {
+  position: fixed !important;
+  left: max(16px, env(safe-area-inset-left)) !important;
+  right: auto !important;
+  bottom: max(16px, env(safe-area-inset-bottom)) !important;
+  z-index: 80;
+  background: linear-gradient(135deg, var(--red-light), var(--red-dark)) !important;
+  border: 2px solid var(--yellow) !important;
+  color: var(--white) !important;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28);
+}
+
+.cart-fab:hover {
+  background: linear-gradient(135deg, var(--red), var(--red-dark)) !important;
+}
+
+.cart-fab-count {
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+}
+
+@media (max-width: 480px) {
+  .cart-fab {
+    left: max(12px, env(safe-area-inset-left)) !important;
+    right: auto !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}
