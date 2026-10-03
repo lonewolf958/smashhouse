@@ -10,33 +10,33 @@
 
 :root {
 
-  /* Main Smash House palette */
-  --black: #101010;
-  --black-soft: #181818;
-  --charcoal: #242424;
+  /* Smash House palette — matched to the table menu */
+  --black: #151515;
+  --black-soft: #202020;
+  --charcoal: #2C2C2C;
 
-  --red: #E53935;
-  --red-dark: #B71C1C;
-  --red-light: #FF5A55;
+  --red: #F06400;       /* Orange accent */
+  --red-dark: #C94B00;  /* Deep orange */
+  --red-light: #FF7A00; /* Bright orange */
 
-  --yellow: #FFC107;
-  --yellow-dark: #E0A800;
-  --yellow-light: #FFD54F;
+  --yellow: #FF7A00;    /* Kept for existing selectors; now orange */
+  --yellow-dark: #C94B00;
+  --yellow-light: #FFB15C;
 
-  --cream: #FFF8E8;
+  --cream: #FFF8ED;
   --white: #FFFFFF;
-  --off-white: #F7F7F7;
+  --off-white: #FFF8ED;
 
-  --text: #171717;
+  --text: #202020;
   --text-soft: #666666;
-  --text-faint: #999999;
+  --text-faint: #8A8A8A;
 
   --green: #25D366;
   --green-dark: #075E54;
 
   /* Fonts */
-  --font-display: "Bebas Neue", sans-serif;
-  --font-body: "Manrope", sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* Radius */
   --radius-xl: 26px;
@@ -78,10 +78,10 @@ body {
   background:
     radial-gradient(
       circle at 10% 0%,
-      rgba(229, 57, 53, 0.08),
+      rgba(240, 100, 0, 0.045),
       transparent 30%
     ),
-    #f4f4f4;
+    #FFF8ED;
 
   color: var(--text);
 
@@ -118,31 +118,18 @@ a {
    ================================================================ */
 
 .site-header {
-
   position: relative;
-
   background:
     radial-gradient(
-      circle at 90% 20%,
-      rgba(255, 193, 7, 0.18),
-      transparent 30%
+      circle at 15% 20%,
+      rgba(240, 100, 0, 0.10),
+      transparent 35%
     ),
-    linear-gradient(
-      135deg,
-      var(--black),
-      var(--black-soft)
-    );
-
-  color: var(--white);
-
-  padding:
-    20px
-    18px
-    18px;
-
-  border-bottom:
-    3px solid var(--red);
-
+    linear-gradient(135deg, var(--white), var(--cream));
+  color: var(--black);
+  padding: 20px 18px 18px;
+  border-bottom: 1px solid rgba(32, 32, 32, 0.10);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -150,22 +137,16 @@ a {
 /* Decorative diagonal */
 
 .site-header::after {
-
   content: "";
-
   position: absolute;
-
   width: 220px;
   height: 220px;
-
   right: -110px;
   bottom: -150px;
-
-  background: var(--yellow);
-
+  background: var(--red-light);
   border-radius: 50%;
-
-  opacity: 0.12;
+  opacity: 0.08;
+  pointer-events: none;
 }
 
 
@@ -241,7 +222,7 @@ a {
 
   letter-spacing: 3px;
 
-  color: var(--yellow);
+  color: var(--red);
 }
 
 .brand-name {
@@ -259,7 +240,7 @@ a {
 
   letter-spacing: 0.5px;
 
-  color: var(--white);
+  color: var(--black);
 }
 
 .brand-tagline {
@@ -270,7 +251,7 @@ a {
 
   line-height: 1.4;
 
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--text-soft);
 }
 
 
@@ -342,7 +323,7 @@ a {
     rgba(16, 16, 16, 0.97);
 
   border-bottom:
-    1px solid rgba(255, 193, 7, 0.25);
+    1px solid rgba(240, 100, 0, 0.25);
 
   box-shadow:
     0 5px 20px rgba(0, 0, 0, 0.15);
@@ -442,7 +423,7 @@ a {
 
   box-shadow:
     0 4px 15px
-    rgba(255, 193, 7, 0.22);
+    rgba(240, 100, 0, 0.22);
 }
 
 
@@ -545,7 +526,7 @@ a {
 
   box-shadow:
     0 6px 18px
-    rgba(229, 57, 53, 0.22);
+    rgba(240, 100, 0, 0.22);
 }
 
 
@@ -1371,7 +1352,7 @@ body.cart-open {
     50%;
 
   background:
-    #eeeeee;
+    #F5EBDD;
 
   color:
     var(--black);
