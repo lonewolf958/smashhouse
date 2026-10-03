@@ -1,10 +1,14 @@
 
-   
- /* =========================================================================
-   DIGITAL MENU
+/* =========================================================================
+   DIGITAL MENU (display only)
    All menu content lives in MENU_DATA below. To update prices or items,
    edit this array only — the page renders itself from this data.
    Prices are in Tanzanian Shillings (TSh) as printed on the source menu.
+
+   Optional fields:
+   - desc:   small text under an item
+   - note:   text under a category title
+   - addOns: extras shown under that category's items (e.g. burgers)
    ========================================================================= */
 
 const MENU_DATA = [
@@ -20,6 +24,10 @@ const MENU_DATA = [
       { name: "Caramelized Burger", price: 14000, desc: "Beef Patty, Caramelized Onions, Cheddar Cheese, Tomato, Smash Sauce" },
       { name: "Cheese Burger", price: 12000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
       { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" }
+    ],
+    addOns: [
+      { name: "Beef Patty", price: 4000 },
+      { name: "Cheese", price: 2000 }
     ]
   },
 
@@ -33,16 +41,6 @@ const MENU_DATA = [
       { name: "Loaded Fries", price: 15000 },
       { name: "Tingisha", price: 15000 },
       { name: "Zege", price: 5000 }
-    ]
-  },
-
-  /* ----------------------------- ADD-ONS ----------------------------- */
-  {
-    id: "add-ons",
-    name: "Add-ons",
-    items: [
-      { name: "Beef Patty", price: 4000 },
-      { name: "Cheese", price: 2000 }
     ]
   },
 
@@ -101,7 +99,7 @@ const MENU_DATA = [
     ]
   },
 
-  /* ----------------------------- FRESH JUICE ------------------------- */
+  /* ---------------------------- FRESH JUICE -------------------------- */
   {
     id: "fresh-juice",
     name: "Fresh Juice",
@@ -167,21 +165,9 @@ const MENU_DATA = [
     id: "platters",
     name: "Platters",
     items: [
-      {
-        name: "Plate for 4",
-        price: 70000,
-        desc: "Tingisha, Beef Mishkaki, Loaded Fries, Wings, Drumstick"
-      },
-      {
-        name: "Plate for 6",
-        price: 100000,
-        desc: "Tingisha, Beef Mishkaki, Wings, Drumstick, Loaded Fries, Burger (Caramelized / Crispy), Zege, Lemon / Sekela"
-      },
-      {
-        name: "Plate for 8",
-        price: 135000,
-        desc: "Tingisha, Beef Mishkaki x2, Loaded Fries x2, Zege x2, Full Chicken, Wings, Drumstick, Crispy Chicken Wrap, Plain"
-      }
+      { name: "Plate for 4", price: 70000, desc: "Tingisha, Beef Mishkaki, Loaded Fries, Wings, Drumstick" },
+      { name: "Plate for 6", price: 100000, desc: "Tingisha, Beef Mishkaki, Wings, Drumstick, Loaded Fries, Burger (Caramelized / Crispy), Zege, Lemon / Sekela" },
+      { name: "Plate for 8", price: 135000, desc: "Tingisha, Beef Mishkaki x2, Loaded Fries x2, Zege x2, Full Chicken, Wings, Drumstick, Crispy Chicken Wrap, Plain" }
     ]
   },
 
