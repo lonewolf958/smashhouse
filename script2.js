@@ -1,5 +1,8 @@
 /* =========================================================================
    DIGITAL MENU (display only)
+   All menu content lives in MENU_D
+/* =========================================================================
+   DIGITAL MENU (display only)
    All menu content lives in MENU_DATA below. To update prices or items,
    edit this array only — the page renders itself from this data.
    Prices are in Tanzanian Shillings (TSh) as printed on the source menu.
@@ -16,6 +19,7 @@ const MENU_DATA = [
   {
     id: "burgers",
     name: "Burgers",
+    note: "Add-ons: Beef Patty +4,000 | Cheese +2,000 (or order without add-ons)",
     items: [
       { name: "Classic Burger", price: 10000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
       { name: "Crispy Chicken Burger", price: 15000, desc: "Kentucky Style Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Mayo, Smash Sauce" },
@@ -200,7 +204,8 @@ const MENU_DATA = [
   }
 ];
 
-/* =========================================================================
+/*=========================================================================
+
    CART CONFIGURATION
    ========================================================================= */
 
