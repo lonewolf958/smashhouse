@@ -1,414 +1,217 @@
-/* =========================================================================
-   SMASH HOUSE — DIGITAL MENU
+
+   
+ /* =========================================================================
+   DIGITAL MENU
    All menu content lives in MENU_DATA below. To update prices or items,
    edit this array only — the page renders itself from this data.
    Prices are in Tanzanian Shillings (TSh) as printed on the source menu.
    ========================================================================= */
 
 const MENU_DATA = [
-   
-/* -----------------------------------------------------------------------
-     SALAD
-     ----------------------------------------------------------------------- */
 
+  /* ----------------------------- BURGERS ----------------------------- */
   {
-    id: "soup",
-    name: "Soup",
-
+    id: "burgers",
+    name: "Burgers",
     items: [
-      { name: "Vegetable Clear Soup", price: 7000 },
-      { name: "Tomato Soup", price: 7000 },
-      { name: "Chicken Corn Soup", price: 8000 },
-      { name: "Chicken Hot & Sour Soup", price: 8000 },
-      { name: "Chicken Manchow Soup", price: 8000 },
-      { name: "Chicken Cream Soup", price: 8000 }
-    ]
-  },
-   
-  /* -----------------------------------------------------------------------
-     FRIES
-     ----------------------------------------------------------------------- */
-
-  {
-    id: "barbeque",
-    name: "Barbeque",
-
-    items: [
-      { name: "Sekela Chicken", price: 6000 },
-      { name: "Gajjar Chicken", price: 6000 },
-      { name: "Lemon Chicken", price: 6000 },
-      { name: "Choma Chicken", price: 6000 },
-      { name: "Periperi Chicken", price: 6000 },
-      { name: "Fried Chicken/Pilipili", price: 6000 },
-      { name: "Beef Mishkaki", price: 7000 },
-      { name: "Nundu", price: 8000 },
-      { name: "Malai Chicken", price: 8000 },
-      { name: "Chicken Boti", price: 10000 },
-      { name: "Malai Boti", price: 10000 },
-      { name: "Beef Seekh Kabab", price: 10000 },
-      { name: "Chicken Seekh Kabab", price: 10000 },
-      { name: "Bbq Chicken Wings", price: 12000 },
-      { name: "Paneer Tikka", price: 12000 },
-      { name: "Mutton Chops", price: 12000 },
-      { name: "Bbq Prawns", price: 15000 }
+      { name: "Classic Burger", price: 10000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
+      { name: "Crispy Chicken Burger", price: 15000, desc: "Kentucky Style Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Mayo, Smash Sauce" },
+      { name: "Grilled Chicken Burger", price: 12000, desc: "Boneless Grilled Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
+      { name: "Caramelized Burger", price: 14000, desc: "Beef Patty, Caramelized Onions, Cheddar Cheese, Tomato, Smash Sauce" },
+      { name: "Cheese Burger", price: 12000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
+      { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-    BURGERS
-     ----------------------------------------------------------------------- */
-
+  /* ------------------------------ FRIES ------------------------------ */
   {
-    id: "chips",
-    name: "Chips",
-
+    id: "fries",
+    name: "Fries",
     items: [
-      { name: "Plain Chips", price: 3000 },
-      { name: "Masala Chips", price: 4000 },
-      { name: "Periperi Chips", price: 4000 },
-      { name: "Vegetable Chips", price: 5000 },
-      { name: "Schezwan Chips", price: 5000 },
-      { name: "Garlic Chips", price: 5000 },
-      { name: "Plain Zege", price: 4000 },
-      { name: "Masala Zege", price: 5000 }
+      { name: "Plain Fries", price: 3000 },
+      { name: "Seasoned Fries", price: 4000 },
+      { name: "Loaded Fries", price: 15000 },
+      { name: "Tingisha", price: 15000 },
+      { name: "Zege", price: 5000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     CHOMA
-     ----------------------------------------------------------------------- */
-
+  /* ----------------------------- ADD-ONS ----------------------------- */
   {
-    id: "naan",
-    name: "Naan",
-
+    id: "add-ons",
+    name: "Add-ons",
     items: [
-      { name: "Plain Naan", price: 2000 },
-      { name: "Butter Naan", price: 2000 },
-      { name: "Kulcha Naan", price: 2000 },
-      { name: "Lacha Paratha", price: 2000 },
-      { name: "Garlic Naan", price: 3000 },
-      { name: "Masala Naan", price: 3000 },
-      { name: "Cheese Naan", price: 4000 },
-      { name: "Chilly Garlic Naan", price: 4000 }
+      { name: "Beef Patty", price: 4000 },
+      { name: "Cheese", price: 2000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     RICE
-     ----------------------------------------------------------------------- */
-
+  /* ------------------------------ WINGS ------------------------------ */
   {
-    id: "rice",
-    name: "Rice",
-
+    id: "wings",
+    name: "Wings",
     items: [
-      { name: "Steam Rice", price: 6000 },
-      { name: "Jeera Rice", price: 6000 },
-      { name: "Veg. Fried Rice", price: 7000 },
-      { name: "Egg Fried Rice", price: 8000 },
-      { name: "Chicken Fried Rice", price: 10000 },
-      { name: "Prawns Fried Rice", price: 12000 },
-      { name: "Mix Fried Rice", price: 12000 }
+      { name: "Sweet Wings", price: 15000 },
+      { name: "BBQ Wings", price: 15000 },
+      { name: "Lemon Butter Wings", price: 15000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     NOODLE
-     ----------------------------------------------------------------------- */
-
+  /* ---------------------------- DRUM STICK --------------------------- */
   {
-    id: "noodle",
-    name: "Noodle",
-
+    id: "drum-stick",
+    name: "Drum Stick",
     items: [
-      { name: "Veg. Noodle", price: 8000 },
-      { name: "Egg Noodle", price: 8000 },
-      { name: "Chicken Hakka Noodle", price: 10000 },
-      { name: "Beef Noodle", price: 10000 },
-      { name: "Prawns Noodle", price: 12000 },
-      { name: "Mix Noodle", price: 12000 },
-	  { name: "Schezwan Noodle (Chicken)", price: 12000 },
-      { name: "Schezwan Noodle (Beef)", price: 12000 }
+      { name: "Sweet Drum Stick", price: 15000 },
+      { name: "BBQ Drum Stick", price: 15000 },
+      { name: "Lemon Butter Drum Stick", price: 15000 },
+      { name: "Crispy Drum Stick", price: 15000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     INDIAN NON-VEG
-     ----------------------------------------------------------------------- */
+  /* ------------------------------- WRAP ------------------------------ */
   {
-    id: "indian-non-veg",
-    name: "Indian (Non-Veg)",
-
+    id: "wrap",
+    name: "Wrap",
     items: [
-      { name: "Chicken Hydrabadi", price: 12000 },
-      { name: "Chicken Makhani", price: 12000 },
-      { name: "Chicken Karai", price: 12000 },
-      { name: "Chicken Coconut", price: 12000 },
-      { name: "Chicken Curry", price: 12000 },
-      { name: "Chicken Nawabi", price: 12000 },
-      { name: "Chicken Kolapuri", price: 12000 },
-      { name: "Chicken Tikka Masala", price: 12000 },
-      { name: "Chicken Korma", price: 12000 },
-      { name: "Chicken Kadai", price: 12000 },
-      { name: "Chicken White Karai", price: 12000 },
-      { name: "Mutton White Karai", price: 12000 },
-      { name: "Mutton Makhani", price: 12000 },
-      { name: "Mutton Curry", price: 12000 },
-      { name: "Mutton Kadai", price: 12000 },
-      { name: "Mutton Karai", price: 12000 },
-      { name: "Mutton Masala", price: 12000 },
-      { name: "Mutton Korma", price: 12000 },
-      { name: "Mutton Rogan Josh", price: 12000 },
-      { name: "Prawns Curry", price: 12000 },
-      { name: "Prawns Karai", price: 12000 },
-      { name: "Prawns Kadai", price: 12000 },
-      { name: "Prawns Hydrabadi", price: 12000 },
-      { name: "Prawns Kolapuri", price: 12000 },
-      { name: "Prawns Masala", price: 12000 },
-      { name: "Butter Prawns", price: 12000 }
+      { name: "Crispy Chicken Wrap", price: 10000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     INDIAN VEG
-     ----------------------------------------------------------------------- */
-
+  /* ------------------------------- CHOMA ----------------------------- */
   {
-    id: "indian-veg",
-    name: "Indian (Veg)",
-
+    id: "choma",
+    name: "Choma",
     items: [
-      { name: "Daal Fry", price: 10000 },
-      { name: "Daal Tarka", price: 10000 },
-      { name: "Veg. Hydrabadi", price: 10000 },
-      { name: "Veg Kadai", price: 10000 },
-      { name: "Veg Karai", price: 10000 },
-      { name: "Veg Kolapuri", price: 10000 },
-      { name: "Mix Veg Curry", price: 10000 },
-      { name: "Paneer Makhani", price: 12000 },
-      { name: "Paneer Hydrabadi", price: 12000 },
-      { name: "Paneer Karai", price: 12000 },
-      { name: "Paneer Kadai", price: 12000 },
-      { name: "Paneer Tikka Masala", price: 12000 },
-      { name: "Paneer Kadai", price: 12000 },
-      { name: "Paneer Karai", price: 12000 },
-      { name: "Paneer Makhani", price: 12000 },
-      { name: "Paneer Curry", price: 12000 },
-      { name: "Paneer Tikka Masala", price: 12000 },
-      { name: "Palak Paneer", price: 12000 },
-      { name: "Paneer Corn Masala", price: 12000 }
+      { name: "Sekela", price: 9000 },
+      { name: "Lemon", price: 9000 },
+      { name: "Kuku Choma", price: 9000 },
+      { name: "Morogoro Mishkaki", price: 7000 },
+      { name: "Beef Mishkaki Plate", price: 10000 },
+      { name: "Ndizi Choma", price: 1000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     CHINESE NON-VEG
-     ----------------------------------------------------------------------- */
-
+  /* ------------------------------- SALAD ----------------------------- */
   {
-    id: "chinese-non-veg",
-    name: "Chinese (Non-Veg)",
-
+    id: "salad",
+    name: "Salad",
     items: [
-      { name: "Chilly Chicken", price: 12000 },
-      { name: "Chicken Manchurain", price: 12000 },
-      { name: "Chicken 65", price: 12000 },
-      { name: "Chicken Pepper", price: 12000 },
-      { name: "Chicken Singapore", price: 12000 },
-      { name: "Chicken Lollypop", price: 12000 },
-      { name: "Chicken Kolapuri", price: 12000 },
-      { name: "Chinese Chicken Wings", price: 12000 },
-      { name: "Cripsy Chicken", price: 12000 },
-      { name: "Crispy Prawns", price: 15000 },
-      { name: "Chilly Prawns", price: 15000 },
-      { name: "Prawns 65", price: 15000 },
-      { name: "Pranws Pepper", price: 15000 },
-      { name: "Beef Chilly", price: 12000 },
-      { name: "Beef Pepper", price: 12000 }
+      { name: "Chicken Salad", price: 15000, desc: "Chicken, Boiled Eggs, Tomato, Lettuce, Broccoli, Carrot, Cucumber" }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     CHINESE VEG
-     ----------------------------------------------------------------------- */
-
+  /* ----------------------------- FRESH JUICE ------------------------- */
   {
-    id: "chinese-veg",
-    name: "Chinese (Veg)",
-
+    id: "fresh-juice",
+    name: "Fresh Juice",
     items: [
-      { name: "Chilly Mushroom", price: 10000 },
-      { name: "Veg Manchurain", price: 10000 },
-      { name: "Veg 65", price: 10000 },
-      { name: "Crispy Veg.", price: 10000 },
-      { name: "Chilly Paneer", price: 12000 },
-      { name: "Paneer 65", price: 12000 },
-      { name: "Paneer Manchurian", price: 12000 },
-      { name: "Crispy Paneer", price: 12000 }
+      { name: "Orange Juice", price: 5000 },
+      { name: "Lemon Juice", price: 5000 },
+      { name: "Mix Juice", price: 5000 },
+      { name: "Mango Juice", price: 5000 },
+      { name: "Avocado Juice", price: 5000 },
+      { name: "Pineapple Juice", price: 5000 },
+      { name: "Banana Juice", price: 5000 },
+      { name: "Passion Juice", price: 5000 },
+      { name: "Watermelon Juice", price: 5000 },
+      { name: "Lemon Milk", price: 10000 },
+      { name: "Passion Milk", price: 10000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     GRILLED STEAK
-     ----------------------------------------------------------------------- */
-
+  /* ----------------------------- SMOOTHIES --------------------------- */
   {
-    id: "grilled-steak",
-    name: "Grilled Steak",
-
-    note: "All steaks are served with mashpotato/fries.",
-
+    id: "smoothies",
+    name: "Smoothies",
     items: [
-      { name: "Beef Pepper Steak", price: 18000 },
-      { name: "Hawaii Beef Steak", price: 18000 },
-      { name: "American Beef Steak", price: 15000 },
-      { name: "Cowboy Beef Steak", price: 15000 },
-      { name: "Cheese Mustard Beef Steak", price: 15000 },
-      { name: "French Onion Beef Steak", price: 15000 },
-      { name: "Hannan Special Beef Steak", price: 15000 },
-      { name: "Chicken Pepper Steak", price: 18000 },
-      { name: "Hawaii Chicken Steak", price: 18000 },
-      { name: "American Chicken Steak", price: 15000 },
-      { name: "Cowboy Chicken Steak", price: 15000 },
-      { name: "Cheese Mustard Chicken Steak", price: 15000 },
-      { name: "French Onion Chicken Steak", price: 15000 },
-      { name: "Hannan Special Chicken Steak", price: 15000 }
+      { name: "Mango", price: 8000 },
+      { name: "Avocado", price: 8000 },
+      { name: "Mixed Fruit", price: 8000 }
     ]
   },
 
-
-  /* -----------------------------------------------------------------------
-     ITALIAN PIZZA
-     ----------------------------------------------------------------------- */
-
+  /* ---------------------------- MILKSHAKES --------------------------- */
   {
-    id: "italian-pizza",
-    name: "Italian Pizza",
-
-    sizeLabels: ["Small", "Large"],
-
+    id: "milkshakes",
+    name: "Milkshakes",
     items: [
-      { name: "Chicken Pizza", small: 12000, large: 18000 },
-      { name: "Chicken Tikka Pizza", small: 12000, large: 18000 },
-      { name: "Hawaii Pizza", small: 12000, large: 18000 },
-      { name: "Raskazoni Pizza", small: 12000, large: 18000 },
-      { name: "Veg Pizza", small: 12000, large: 18000 },
-      { name: "Beef Pizza", small: 12000, large: 18000 },
-      { name: "Mef Pizza", small: 12000, large: 18000 },
-      { name: "Egg Pizza", small: 12000, large: 18000 },
-      { name: "Prawns Pizza", small: 17000, large: 22000 },
-      { name: "Calamari Pizza", small: 17000, large: 22000 },
-      { name: "Paneer Tikka Pizza", small: 17000, large: 22000 }
+      { name: "Oreo Shake", price: 10000 },
+      { name: "Snickers Shake", price: 10000 },
+      { name: "Chocolate Shake", price: 10000 },
+      { name: "Kitkat Shake", price: 10000 },
+      { name: "Strawberry Shake", price: 10000 },
+      { name: "Coffee Shake", price: 10000 },
+      { name: "Tende Shake", price: 10000 },
+      { name: "Lotus Shake", price: 10000 },
+      { name: "Milo Shake", price: 10000 }
     ]
   },
 
-/* -----------------------------------------------------------------------
-     ZANZIBAR PIZZA
-     ----------------------------------------------------------------------- */
-
+  /* ------------------------------ MOJITOS ---------------------------- */
   {
-    id: "zanzibar-pizza",
-    name: "Zanzibar Pizza",
-
+    id: "mojitos",
+    name: "Mojitos",
     items: [
-      { name: "Beef Znz Pizza", price: 5000 },
-      { name: "Chicken Znz Pizza", price: 5000 },
-      { name: "Veg Znz Pizza", price: 5000 },
-      { name: "Nutella Pizza", price: 6000 },
-      { name: "Beef Roll", price: 10000 },
-      { name: "Chicken Roll", price: 10000 }
+      { name: "Lemon", price: 7000 },
+      { name: "Blue Lagoon", price: 7000 },
+      { name: "Strawberry", price: 7000 },
+      { name: "Passion", price: 7000 },
+      { name: "Vimto", price: 7000 },
+      { name: "Orange", price: 7000 }
     ]
   },
-   
-  /* -----------------------------------------------------------------------
-     HANNAN KISINIA'S / PLATTERS
-     ----------------------------------------------------------------------- */
 
+  /* ------------------------------ PLATTERS --------------------------- */
   {
-    id: "hanan-platters",
+    id: "platters",
     name: "Platters",
-
     items: [
       {
-        name: "Chicken Platter",
-        price: 35000,
-		desc: "2 half chicken , 1 pc seek kabab , 4 pc ch/lollypop , 4 pc ch/wings , 1 znz pizza , 2 butternaan , 1 portion of rice and 1/2 portion curry & 3 types of chips.",
+        name: "Plate for 4",
+        price: 70000,
+        desc: "Tingisha, Beef Mishkaki, Loaded Fries, Wings, Drumstick"
       },
-
       {
-        name: "Beef Platter",
-        price: 40000,
-		desc: "4 sticks mishkaki  , 4 sticks nundu , 1 pc seekkabab , 4 pc chops , 1 pc steak , 1 znz pizza , 2 butternaan , 1 portion of rice , 1/2 portion of curry & 3 types of chips.",
+        name: "Plate for 6",
+        price: 100000,
+        desc: "Tingisha, Beef Mishkaki, Wings, Drumstick, Loaded Fries, Burger (Caramelized / Crispy), Zege, Lemon / Sekela"
       },
-
       {
-        name: "Mix Platter(Chicken & Beef)",
-        price: 45000,
-		desc: "4 pc chops , 4 sticks mishkaki , 4 stick nundu , 1/2 sekela , 1 pc seekkabab , 4 pc ch/lollypop , 4 pc ch/wings , 1 znz pizza , 2 butternaan , 1 portion of rice , 1/2 portion of curry & 3 types of chips.",
-      },
-
-      {
-        name: "Seafood PLatter (Small)",
-        price: 45000,
-		desc: "Depends on availability.",
-      },
-
-       {
-        name: "Seafood PLatter (Large)",
-        price: 90000,
-		desc: "Depends on availability.",
+        name: "Plate for 8",
+        price: 135000,
+        desc: "Tingisha, Beef Mishkaki x2, Loaded Fries x2, Zege x2, Full Chicken, Wings, Drumstick, Crispy Chicken Wrap, Plain"
       }
     ]
   },
-  
+
+  /* ------------------------------- SHISHA ---------------------------- */
   {
-    id: "juice",
-    name: "Juice",
-	sizeLabels: ["Small", "Large"],
-	
+    id: "shisha",
+    name: "Shisha",
     items: [
-      { name: "Water Melon Juice", small: 3000, large: 5000 },
-      { name: "Mango Juice", small: 3000, large: 5000 },
-      { name: "Pineapple Juice", small: 3000, large: 5000 },
-      { name: "Passion Juice", small: 3000, large: 5000 },
-      { name: "Lemon Juice", small: 3000, large: 5000 },
-      { name: "Lemon Mint", small: 3000, large: 5000 },
-      { name: "Orange Juice", small: 3000, large: 5000 },
-      { name: "Avocado Juice", small: 3000, large: 5000 },
-      { name: "Kungu Juice", small: 3000, large: 5000 },
-    ],
-  },
-	  {
-    id: "mojito",
-    name: "Mojito",
-    items: [
-      { name: "Passion Mojito", price: 8000 },
-      { name: "Lemon Mojito", price: 8000 },
-      { name: "Pineapple Mojito", price: 8000 },
-      { name: "Blue Mojito", price: 8000 },
-	  { name: "Strawberry Mojito", price: 8000 },
-	  { name: "Vimto Mojito", price: 8000 },
-    ],
-  },
-   {
-    id: "drinks",
-    name: "Drinks",
-    items: [
-      { name: "Soft Drinks", price: 1500 },
-      { name: "Water (500ml)", price: 500 },
-      { name: "Water (1.5 ltrs)", price: 1500 },
-      { name: "Hill Sparkling Water (330ml)", price: 1500 },
-	  { name: "Hill Sparkling Water (750ml)", price: 3500 },
-    ],
+      { name: "Love66", price: 30000 },
+      { name: "Mint", price: 30000 },
+      { name: "Bluemix", price: 30000 },
+      { name: "Blueberry", price: 30000 },
+      { name: "Peach", price: 30000 },
+      { name: "Grape", price: 30000 },
+      { name: "Gum", price: 30000 },
+      { name: "Kiwi", price: 30000 },
+      { name: "Watermelon", price: 30000 },
+      { name: "Paan", price: 30000 },
+      { name: "Mix Shisha", price: 30000 },
+      { name: "Orange", price: 30000 },
+      { name: "Passion", price: 30000 },
+      { name: "Dubai Night", price: 30000 },
+      { name: "Bubblegum", price: 30000 },
+      { name: "Strawberry", price: 30000 },
+      { name: "Red Killer", price: 30000 },
+      { name: "Blue Thunder", price: 30000 },
+      { name: "Melon", price: 30000 },
+      { name: "Super Mint", price: 30000 },
+      { name: "Refill", price: 15000 }
+    ]
   }
 ];
 
