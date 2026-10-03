@@ -1,8 +1,5 @@
 /* =========================================================================
    DIGITAL MENU (display only)
-   All menu content lives in MENU_D
-/* =========================================================================
-   DIGITAL MENU (display only)
    All menu content lives in MENU_DATA below. To update prices or items,
    edit this array only — the page renders itself from this data.
    Prices are in Tanzanian Shillings (TSh) as printed on the source menu.
@@ -10,7 +7,6 @@
    Optional fields:
    - desc:   small text under an item
    - note:   text under a category title
-   - addOns: extras shown under that category's items (e.g. burgers)
    ========================================================================= */
 
 const MENU_DATA = [
@@ -19,18 +15,15 @@ const MENU_DATA = [
   {
     id: "burgers",
     name: "Burgers",
-    note: "Add-ons: Beef Patty +4,000 | Cheese +2,000 (or order without add-ons)",
     items: [
       { name: "Classic Burger", price: 10000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
       { name: "Crispy Chicken Burger", price: 15000, desc: "Kentucky Style Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Mayo, Smash Sauce" },
       { name: "Grilled Chicken Burger", price: 12000, desc: "Boneless Grilled Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
       { name: "Caramelized Burger", price: 14000, desc: "Beef Patty, Caramelized Onions, Cheddar Cheese, Tomato, Smash Sauce" },
       { name: "Cheese Burger", price: 12000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
-      { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" }
-    ],
-    addOns: [
-      { name: "Beef Patty", price: 4000 },
-      { name: "Cheese", price: 2000 }
+      { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
+      { name: "Add-on: Beef Patty", price: 4000 },
+      { name: "Add-on: Cheese", price: 2000 }
     ]
   },
 
