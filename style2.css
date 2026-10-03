@@ -1852,11 +1852,11 @@ scroll-behavior: auto;
 animation-duration: 0.01ms !important;
 animation-iteration-count: 1 !important;
 
-```
+
 transition-duration: 0.01ms !important;
 
 scroll-behavior: auto !important;
-```
+
 
 }
 
@@ -1869,4 +1869,5 @@ scroll-behavior: auto !important;
 ::selection {
 background: var(--red);
 color: var(--white);
+resize:none;
 }
