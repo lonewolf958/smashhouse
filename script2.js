@@ -9,28 +9,33 @@
    Optional category field: note — text under the category title
    ========================================================================= */
 
-/* Burgers that come with a choice of patty (Beef or Chicken).
-   Each choice lists its own optional add-ons — edit names and prices here.
-   NOTE: the Chicken Patty price below is a placeholder; set the real one. */
+/* Burger add-ons — edit names and prices here.
+   NOTE: the Chicken Patty price is a placeholder; set the real one. */
+const ADDON_BEEF_PATTY = { name: "Extra Beef Patty", price: 4000 };
+const ADDON_CHICKEN_PATTY = { name: "Extra Chicken Patty", price: 4000 };
+const ADDON_CHEESE = { name: "Extra Cheese", price: 2000 };
+
+/* Burgers sold as Beef OR Chicken: the customer picks the patty first,
+   then the add-ons that match it. */
 const BURGER_PATTY_CHOICES = {
   label: "Choose your patty *",
   options: [
-    {
-      name: "Beef",
-      addons: [
-        { name: "Extra Beef Patty", price: 4000 },
-        { name: "Extra Cheese", price: 2000 }
-      ]
-    },
-    {
-      name: "Chicken",
-      addons: [
-        { name: "Extra Chicken Patty", price: 4000 },
-        { name: "Extra Cheese", price: 2000 }
-      ]
-    }
+    { name: "Beef", addons: [ADDON_BEEF_PATTY, ADDON_CHEESE] },
+    { name: "Chicken", addons: [ADDON_CHICKEN_PATTY, ADDON_CHEESE] }
   ]
 };
+
+/* Burgers with a fixed patty: no patty choice, add-ons only. */
+const BEEF_BURGER_ADDONS = {
+  preselect: true,
+  options: [{ name: "", addons: [ADDON_BEEF_PATTY, ADDON_CHEESE] }]
+};
+
+const CHICKEN_BURGER_ADDONS = {
+  preselect: true,
+  options: [{ name: "", addons: [ADDON_CHICKEN_PATTY, ADDON_CHEESE] }]
+};
+
 
 const MENU_DATA = [
 
@@ -41,11 +46,9 @@ const MENU_DATA = [
       { name: "Classic Burger", price: 10000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce", choices: BURGER_PATTY_CHOICES },
       { name: "Cheese Burger", price: 12000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce", choices: BURGER_PATTY_CHOICES },
       { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce", choices: BURGER_PATTY_CHOICES },
-      { name: "Crispy Chicken Burger", price: 15000, desc: "Kentucky Style Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Mayo, Smash Sauce" },
-      { name: "Grilled Chicken Burger", price: 12000, desc: "Boneless Grilled Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
-      { name: "Caramelized Burger", price: 14000, desc: "Beef Patty, Caramelized Onions, Cheddar Cheese, Tomato, Smash Sauce" },
-      { name: "Add-on: Beef Patty", price: 4000 },
-      { name: "Add-on: Cheese", price: 2000 }
+      { name: "Crispy Chicken Burger", price: 15000, desc: "Kentucky Style Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Mayo, Smash Sauce", choices: CHICKEN_BURGER_ADDONS },
+      { name: "Grilled Chicken Burger", price: 12000, desc: "Boneless Grilled Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce", choices: CHICKEN_BURGER_ADDONS },
+      { name: "Caramelized Burger", price: 14000, desc: "Beef Patty, Caramelized Onions, Cheddar Cheese, Tomato, Smash Sauce", choices: BEEF_BURGER_ADDONS }
     ]
   },
 
@@ -330,9 +333,12 @@ function buildChoiceBlock(cat, item, priceEl, addBtn) {
     if (selected) {
       addBtn.dataset.key = [cat.id, item.name, selected.name]
         .concat(addons.map((a) => a.name))
+        .filter(Boolean)
         .join("::");
       addBtn.dataset.name =
-        item.name + " (" + selected.name + ")" + addons.map((a) => " + " + a.name).join("");
+        item.name +
+        (selected.name ? " (" + selected.name + ")" : "") +
+        addons.map((a) => " + " + a.name).join("");
       addBtn.dataset.price = total;
     }
   }
@@ -386,8 +392,14 @@ function buildChoiceBlock(cat, item, priceEl, addBtn) {
     group.appendChild(btn);
   });
 
-  wrap.appendChild(el("p", "choice-label", cfg.label));
-  wrap.appendChild(group);
+  if (cfg.preselect) {
+    /* Fixed patty: go straight to the add-ons */
+    selected = cfg.options[0];
+    renderAddons();
+  } else {
+    wrap.appendChild(el("p", "choice-label", cfg.label));
+    wrap.appendChild(group);
+  }
   wrap.appendChild(addonWrap);
 
   refresh();
