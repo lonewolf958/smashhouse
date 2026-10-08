@@ -1,9 +1,6 @@
 /* =========================================================================
    SMASH HOUSE — ORDER ONLINE STYLESHEET
-
    Visual identity: Charcoal + Orange + Warm Cream
-   Colours, borders, shadows and button styles are matched to the
-   table menu stylesheet. Layout and behaviour are unchanged.
    ========================================================================= */
 
 
@@ -13,11 +10,9 @@
 
 :root {
 
-  /* ---------- Main colours (same as table menu) ---------- */
+  /* Colours */
   --charcoal-deep: #151515;
   --charcoal: #202020;
-  --charcoal-mid: #2C2C2C;
-  --charcoal-light: #3A3A3A;
 
   --orange-deep: #C94B00;
   --orange: #F06400;
@@ -25,59 +20,39 @@
   --orange-soft: #FFB15C;
 
   --cream: #FFF8ED;
-  --cream-dark: #F5EBDD;
   --peach: #FFF1E2;
   --white: #FFFFFF;
 
-  /* ---------- Legacy names (kept so existing selectors still work) ---------- */
-  --black: var(--charcoal-deep);
-  --black-soft: var(--charcoal);
-
-  --red: var(--orange);
-  --red-dark: var(--orange-deep);
-  --red-light: var(--orange-bright);
-
-  --yellow: var(--orange-bright);
-  --yellow-dark: var(--orange-deep);
-  --yellow-light: var(--orange-soft);
-
-  --off-white: var(--cream);
-
-  /* ---------- Text ---------- */
+  /* Text */
   --text: #202020;
   --text-soft: #666666;
   --text-faint: #8A8A8A;
 
-  /* ---------- WhatsApp ---------- */
+  /* WhatsApp */
   --green: #25D366;
-  --green-dark: #075E54;
 
-  /* ---------- Borders ---------- */
+  /* Borders */
   --border: rgba(32, 32, 32, 0.10);
   --border-soft: rgba(32, 32, 32, 0.07);
   --border-orange: rgba(240, 100, 0, 0.28);
 
-  /* ---------- Fonts ---------- */
+  /* Fonts (loaded in the HTML) */
   --font-display: "Playfair Display", Georgia, serif;
   --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* ---------- Radius ---------- */
+  /* Radius */
   --radius-xl: 26px;
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
   --radius-pill: 999px;
 
-  /* ---------- Shadows ---------- */
-  --shadow-soft: 0 16px 40px -20px rgba(0, 0, 0, 0.30);
+  /* Shadows */
   --shadow-card: 0 8px 22px -15px rgba(0, 0, 0, 0.22);
-  --shadow-heavy: 0 12px 40px rgba(0, 0, 0, 0.30);
   --shadow-orange: 0 10px 24px -12px rgba(240, 100, 0, 0.45);
 
-  /* ---------- Navigation ---------- */
+  /* Layout + motion */
   --nav-height: 62px;
-
-  /* ---------- Motion ---------- */
   --transition-fast: 180ms ease;
 }
 
@@ -178,7 +153,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
 }
 
 .brand-logo img {
@@ -194,7 +168,6 @@ a {
 
 .brand-eyebrow {
   margin: 0 0 2px;
-  font-family: var(--font-body);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 3px;
@@ -259,7 +232,7 @@ a {
 
 
 /* =========================================================================
-   5. CATEGORY NAVIGATION
+   5. CATEGORY NAVIGATION + PILLS
    ========================================================================= */
 
 .category-nav {
@@ -286,11 +259,6 @@ a {
 .category-nav-scroll::-webkit-scrollbar {
   display: none;
 }
-
-
-/* =========================================================================
-   6. CATEGORY PILLS
-   ========================================================================= */
 
 .nav-pill {
   flex-shrink: 0;
@@ -330,7 +298,7 @@ a {
 
 
 /* =========================================================================
-   7. MENU CONTENT
+   6. MENU CONTENT + CATEGORY SECTIONS
    ========================================================================= */
 
 .menu-content {
@@ -339,11 +307,6 @@ a {
   margin: 0 auto;
   padding: 12px 16px 110px;
 }
-
-
-/* =========================================================================
-   8. CATEGORY SECTION
-   ========================================================================= */
 
 .category-section {
   position: relative;
@@ -398,7 +361,7 @@ a {
 
 
 /* =========================================================================
-   9. MENU ITEMS
+   7. MENU ITEMS
    ========================================================================= */
 
 .item-list {
@@ -430,8 +393,10 @@ a {
   box-shadow: var(--shadow-card);
 }
 
-/* Orange side accent */
-.menu-item::before {
+/* Orange side accent (menu items, cart items, order details box) */
+.menu-item::before,
+.cart-item::before,
+.order-details-box::before {
   content: "";
   position: absolute;
   left: 0;
@@ -470,11 +435,6 @@ a {
   line-height: 1.5;
 }
 
-
-/* =========================================================================
-   10. PRICES
-   ========================================================================= */
-
 .menu-item-price {
   flex-shrink: 0;
   padding: 5px 11px;
@@ -488,45 +448,9 @@ a {
   white-space: nowrap;
 }
 
-/* Dual pricing */
-.menu-item-price--dual {
-  display: flex;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-
-.price-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 5px 10px;
-  background: var(--peach);
-  border: 1px solid rgba(240, 100, 0, 0.20);
-  border-radius: var(--radius-sm);
-}
-
-.price-option-label {
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-faint);
-}
-
-.price-option-value {
-  font-family: var(--font-display);
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--orange-deep);
-  white-space: nowrap;
-}
-
 
 /* =========================================================================
-   11. ADD TO CART
+   8. ADD TO CART BUTTON
    ========================================================================= */
 
 .menu-item-actions {
@@ -541,206 +465,151 @@ a {
   padding: 7px 15px;
   border: 1.5px solid var(--orange);
   border-radius: var(--radius-pill);
-  background: transparent;
-  color: var(--orange);
+  background: var(--orange);
+  color: var(--white);
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 6px 14px -8px rgba(201, 75, 0, 0.55);
   transition:
     background var(--transition-fast),
-    color var(--transition-fast),
+    border-color var(--transition-fast),
     transform var(--transition-fast);
 }
 
 .add-cart-btn:hover {
-  background: var(--orange);
-  color: var(--white);
+  background: var(--orange-deep);
+  border-color: var(--orange-deep);
 }
 
 .add-cart-btn:active {
   transform: scale(0.96);
 }
 
+/* "Added" state: charcoal, so it reads as confirmed */
 .add-cart-btn.added {
-  background: var(--orange);
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+}
+
+
+/* Patty choice + add-ons (burgers with Beef / Chicken) */
+
+.add-cart-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.item-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.choice-label {
+  margin: 0;
+  color: var(--charcoal);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.choice-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.choice-btn {
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--text-soft);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.choice-btn:hover {
+  border-color: var(--border-orange);
+}
+
+.choice-btn.active {
+  background: var(--charcoal);
   border-color: var(--orange);
   color: var(--white);
 }
 
-
-/* =========================================================================
-   12. PLATTERS
-   ========================================================================= */
-
-#platters .item-list,
-.platters .item-list {
-  grid-template-columns: 1fr !important;
+.addon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
+.addon-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 11px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.addon-option input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+
+.addon-name {
+  flex: 1;
+  color: var(--charcoal-deep);
+  font-weight: 600;
+}
+
+.addon-price {
+  color: var(--orange-deep);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+
 /* =========================================================================
-   19. FOOTER
+   9. FOOTER
    ========================================================================= */
 
 .site-footer {
-
-  background:
-    linear-gradient(
-      180deg,
-      var(--charcoal),
-      var(--charcoal-deep)
-    );
-
-  color:
-    var(--white);
-
-  padding:
-    34px
-    20px
-    22px;
-
-  border-top:
-    1px solid
-    rgba(
-      240,
-      100,
-      0,
-      0.20
-    );
-}
-
-.footer-inner {
-
-  max-width: 900px;
-
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  gap: 20px;
-
-  text-align: center;
-}
-
-.footer-name {
-
-  margin:
-    0
-    0
-    4px;
-
-  font-family:
-    var(--font-display);
-
-  font-weight:
-    800;
-
-  font-size:
-    21px;
-
-  color:
-    var(--white);
-}
-
-.footer-tagline {
-
-  margin: 0;
-
-  font-size:
-    13px;
-
-  color:
-    var(--orange-soft);
-
-  font-style:
-    italic;
-}
-
-.footer-details p {
-
-  margin:
-    0
-    0
-    5px;
-
-  font-size:
-    12.5px;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.70
-    );
-
-  line-height:
-    1.6;
-}
-
-.footer-details a {
-
-  color:
-    var(--white);
-
-  font-weight:
-    600;
-}
-
-.footer-details a:hover {
-
-  color:
-    var(--orange-bright);
+  padding: 22px 20px;
+  background: linear-gradient(180deg, var(--charcoal), var(--charcoal-deep));
+  border-top: 1px solid rgba(240, 100, 0, 0.20);
 }
 
 .footer-copyright {
-
-  max-width:
-    900px;
-
-  margin:
-    26px
-    auto
-    0;
-
-  padding-top:
-    16px;
-
-  border-top:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.10
-    );
-
-  font-size:
-    11.5px;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.45
-    );
-
-  text-align:
-    center;
+  margin: 0;
+  text-align: center;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 
-
 /* =========================================================================
-   14. CART FLOATING BUTTON
+   10. CART FLOATING BUTTON
    ========================================================================= */
 
 .cart-fab {
   position: fixed;
-  right: 16px;
-  bottom: 16px;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
   z-index: 80;
   display: flex;
   align-items: center;
@@ -761,16 +630,13 @@ a {
 }
 
 .cart-fab:hover {
+  background: linear-gradient(135deg, var(--orange-bright), var(--orange-deep));
   transform: translateY(-3px);
   box-shadow: 0 14px 30px -12px rgba(240, 100, 0, 0.55);
 }
 
 .cart-fab:active {
   transform: scale(0.96);
-}
-
-.cart-fab-icon {
-  font-size: 17px;
 }
 
 .cart-fab-count {
@@ -789,7 +655,7 @@ a {
 
 
 /* =========================================================================
-   15. CART OVERLAY
+   11. CART OVERLAY + DRAWER
    ========================================================================= */
 
 .cart-overlay {
@@ -809,11 +675,6 @@ a {
 body.cart-open {
   overflow: hidden;
 }
-
-
-/* =========================================================================
-   16. CART DRAWER
-   ========================================================================= */
 
 .cart-drawer {
   position: fixed;
@@ -837,11 +698,6 @@ body.cart-open {
   transform: translateY(0);
 }
 
-
-/* =========================================================================
-   17. CART HEADER
-   ========================================================================= */
-
 .cart-drawer-header {
   flex: 0 0 auto;
   display: flex;
@@ -852,14 +708,6 @@ body.cart-open {
     radial-gradient(circle at 85% 20%, rgba(240, 100, 0, 0.20), transparent 40%),
     linear-gradient(135deg, var(--charcoal-deep), var(--charcoal));
   border-bottom: 1px solid rgba(240, 100, 0, 0.25);
-}
-
-.cart-eyebrow {
-  margin: 0 0 1px;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: var(--orange-soft);
 }
 
 .cart-drawer-header h2 {
@@ -891,7 +739,7 @@ body.cart-open {
 
 
 /* =========================================================================
-   18. CART ITEMS
+   12. CART ITEMS
    ========================================================================= */
 
 .cart-items {
@@ -919,18 +767,6 @@ body.cart-open {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-}
-
-/* Orange side accent, same as menu items */
-.cart-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  bottom: 10px;
-  width: 4px;
-  background: linear-gradient(180deg, var(--orange-bright), var(--orange-deep));
-  border-radius: 0 4px 4px 0;
 }
 
 .cart-item-info {
@@ -1018,7 +854,7 @@ body.cart-open {
 
 
 /* =========================================================================
-   19. EMPTY CART
+   13. EMPTY CART
    ========================================================================= */
 
 .cart-empty {
@@ -1028,20 +864,9 @@ body.cart-open {
   color: var(--text-soft);
 }
 
-.cart-empty-icon {
-  font-size: 35px;
-  margin-bottom: 10px;
-}
-
-.cart-empty h3 {
-  margin: 0 0 5px;
-  color: var(--charcoal-deep);
-  font-size: 16px;
-}
-
 .cart-empty p {
   margin: 0 0 18px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .cart-browse-btn {
@@ -1063,7 +888,7 @@ body.cart-open {
 
 
 /* =========================================================================
-   20. CART FOOTER
+   14. CART FOOTER + ORDER DETAILS BOX
    ========================================================================= */
 
 .cart-footer {
@@ -1078,11 +903,6 @@ body.cart-open {
   overscroll-behavior: contain;
 }
 
-
-/* =========================================================================
-   21. ORDER DETAILS BOX
-   ========================================================================= */
-
 .order-details-box {
   position: relative;
   padding: 15px 15px 15px 19px;
@@ -1093,56 +913,14 @@ body.cart-open {
 }
 
 .order-details-box::before {
-  content: "";
-  position: absolute;
-  left: 0;
   top: 12px;
   bottom: 12px;
-  width: 4px;
-  background: linear-gradient(180deg, var(--orange-bright), var(--orange-deep));
   border-radius: 0 4px 4px 0;
 }
 
 
 /* =========================================================================
-   22. CHECKOUT HEADING
-   ========================================================================= */
-
-.checkout-heading {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.checkout-heading-icon {
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--peach);
-  border: 1px solid rgba(240, 100, 0, 0.25);
-  font-size: 16px;
-}
-
-.checkout-heading h3 {
-  margin: 0;
-  color: var(--charcoal-deep);
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.checkout-heading p {
-  margin: 2px 0 0;
-  color: var(--text-soft);
-  font-size: 10.5px;
-}
-
-
-/* =========================================================================
-   23. ORDER TYPE
+   15. ORDER TYPE (Dine in / Delivery / Pickup)
    ========================================================================= */
 
 .order-type-label {
@@ -1156,7 +934,7 @@ body.cart-open {
 
 .order-type-options {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
@@ -1189,9 +967,12 @@ body.cart-open {
   font-weight: 800;
 }
 
-.order-type-small {
-  font-size: 9px;
-  color: var(--text-faint);
+/* Dine in: soft peach with orange edge */
+.order-type-btn--dinein.active {
+  background: var(--peach);
+  border-color: var(--orange);
+  color: var(--orange-deep);
+  box-shadow: var(--shadow-orange);
 }
 
 /* Delivery: charcoal with orange edge */
@@ -1202,17 +983,12 @@ body.cart-open {
   box-shadow: 0 8px 18px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* Pickup: orange */
+/* Pickup: solid orange */
 .order-type-btn--pickup.active {
   background: linear-gradient(135deg, var(--orange-bright), var(--orange));
   border-color: var(--orange);
   color: var(--white);
   box-shadow: var(--shadow-orange);
-}
-
-.order-type-btn.active .order-type-small {
-  color: inherit;
-  opacity: 0.75;
 }
 
 .order-type-hint {
@@ -1234,7 +1010,7 @@ body.cart-open {
 
 
 /* =========================================================================
-   24. CUSTOMER FIELDS
+   16. CUSTOMER FIELDS
    ========================================================================= */
 
 .cart-customer-fields {
@@ -1243,8 +1019,17 @@ body.cart-open {
   gap: 9px;
 }
 
-.input-group {
-  width: 100%;
+/* Elements with their own display rule must still honour the hidden attribute */
+.cart-field-row[hidden],
+.cart-customer-fields[hidden],
+.addon-list[hidden] {
+  display: none;
+}
+
+.cart-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
 }
 
 .cart-input-label {
@@ -1253,11 +1038,6 @@ body.cart-open {
   color: var(--charcoal);
   font-size: 11px;
   font-weight: 700;
-}
-
-.optional {
-  color: var(--text-faint);
-  font-weight: 500;
 }
 
 .cart-input {
@@ -1292,7 +1072,7 @@ body.cart-open {
 
 
 /* =========================================================================
-   25. TOTAL BREAKDOWN
+   17. TOTAL BREAKDOWN
    ========================================================================= */
 
 .cart-total-breakdown {
@@ -1311,17 +1091,21 @@ body.cart-open {
 }
 
 .cart-grand-total {
-  margin-top: 7px;
-  padding-top: 10px;
-  border-top: 2px solid var(--charcoal);
   color: var(--charcoal-deep);
   font-size: 17px;
   font-weight: 800;
 }
 
+/* Divider above the grand total when the fee lines are showing (Delivery) */
+#cart-fee-lines:not([hidden]) + .cart-grand-total {
+  margin-top: 7px;
+  padding-top: 10px;
+  border-top: 2px solid var(--charcoal);
+}
+
 
 /* =========================================================================
-   26. WHATSAPP BUTTON
+   18. WHATSAPP BUTTON + CLEAR CART
    ========================================================================= */
 
 .whatsapp-btn {
@@ -1366,11 +1150,6 @@ body.cart-open {
   line-height: 1.4;
 }
 
-
-/* =========================================================================
-   27. CLEAR CART
-   ========================================================================= */
-
 .clear-cart-btn {
   width: 100%;
   padding: 5px;
@@ -1388,7 +1167,7 @@ body.cart-open {
 
 
 /* =========================================================================
-   28. TABLET / DESKTOP
+   19. TABLET / DESKTOP
    ========================================================================= */
 
 @media (min-width: 700px) {
@@ -1407,19 +1186,15 @@ body.cart-open {
     padding-right: 0;
   }
 
+  /* Two columns of items; Platters stay full width (long descriptions) */
   .item-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
-  #platters .item-list,
-  .platters .item-list {
-    grid-template-columns: 1fr !important;
-  }
-
-  .footer-inner {
-    grid-template-columns: 1fr 1fr;
+  #platters .item-list {
+    grid-template-columns: 1fr;
   }
 
   /* Desktop cart: centred card */
@@ -1442,12 +1217,11 @@ body.cart-open {
     transform: translate(-50%, 50%) scale(1);
     opacity: 1;
   }
-
 }
 
 
 /* =========================================================================
-   28b. NARROW PHONES — HEADER (matches table menu)
+   20. PHONES
    ========================================================================= */
 
 @media (max-width: 480px) {
@@ -1483,12 +1257,13 @@ body.cart-open {
     font-size: 0.76rem;
   }
 
+  .cart-fab {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    padding: 10px 14px;
+    font-size: 12px;
+  }
 }
-
-
-/* =========================================================================
-   29. SMALL PHONES
-   ========================================================================= */
 
 @media (max-width: 380px) {
 
@@ -1513,23 +1288,15 @@ body.cart-open {
     font-size: 13px;
   }
 
-  .cart-fab {
-    right: 12px;
-    bottom: 12px;
-    padding: 10px 14px;
-    font-size: 12px;
-  }
-
   .cart-footer {
     padding-left: 14px;
     padding-right: 14px;
   }
-
 }
 
 
 /* =========================================================================
-   30. ACCESSIBILITY
+   21. ACCESSIBILITY
    ========================================================================= */
 
 button:focus-visible,
@@ -1540,11 +1307,6 @@ textarea:focus-visible {
   outline: 3px solid var(--orange-soft);
   outline-offset: 2px;
 }
-
-
-/* =========================================================================
-   31. REDUCED MOTION
-   ========================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1559,74 +1321,5 @@ textarea:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-}
-
-
-/* =========================================================================
-   32. FINAL FIXES — CART BUTTONS
-   Keep these overrides at the end so they win over earlier rules.
-   ========================================================================= */
-
-/* Filled orange Add to Cart buttons */
-.add-cart-btn,
-.add-to-cart-btn {
-  background: var(--orange) !important;
-  border: 1.5px solid var(--orange) !important;
-  color: var(--white) !important;
-  box-shadow: 0 6px 14px -8px rgba(201, 75, 0, 0.55);
-}
-
-.add-cart-btn:hover,
-.add-to-cart-btn:hover {
-  background: var(--orange-deep) !important;
-  border-color: var(--orange-deep) !important;
-  color: var(--white) !important;
-}
-
-.add-cart-btn:focus-visible,
-.add-to-cart-btn:focus-visible {
-  outline: 3px solid var(--orange-soft);
-  outline-offset: 3px;
-}
-
-/* "Added" state: charcoal, so it reads as confirmed without being bright */
-.add-cart-btn.added,
-.add-to-cart-btn.added {
-  background: var(--charcoal) !important;
-  border-color: var(--charcoal) !important;
-  color: var(--white) !important;
-}
-
-/* Floating cart: anchored bottom-right */
-.cart-fab {
-  position: fixed !important;
-  right: max(16px, env(safe-area-inset-right)) !important;
-  left: auto !important;
-  bottom: max(16px, env(safe-area-inset-bottom)) !important;
-  z-index: 80;
-  background: linear-gradient(135deg, var(--orange), var(--orange-deep)) !important;
-  border: 1.5px solid rgba(255, 177, 92, 0.55) !important;
-  color: var(--white) !important;
-  box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.45);
-}
-
-.cart-fab:hover {
-  background: linear-gradient(135deg, var(--orange-bright), var(--orange-deep)) !important;
-}
-
-.cart-fab-count {
-  background: var(--charcoal) !important;
-  color: var(--white) !important;
-}
-
-@media (max-width: 480px) {
-  .cart-fab {
-    right: max(12px, env(safe-area-inset-right)) !important;
-    left: auto !important;
-    bottom: max(12px, env(safe-area-inset-bottom)) !important;
-    padding: 10px 14px;
-    font-size: 12px;
   }
 }
