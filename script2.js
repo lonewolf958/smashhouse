@@ -1,33 +1,54 @@
 /* =========================================================================
-   DIGITAL MENU (display only)
-   All menu content lives in MENU_DATA below. To update prices or items,
-   edit this array only — the page renders itself from this data.
-   Prices are in Tanzanian Shillings (TSh) as printed on the source menu.
+   SMASH HOUSE — ONLINE ORDER PAGE
 
-   Optional fields:
-   - desc:   small text under an item
-   - note:   text under a category title
+   All menu content lives in MENU_DATA below. To update prices or items,
+   edit that array only — the page renders itself from it.
+   Prices are in Tanzanian Shillings (TSh).
+
+   Optional item field:  desc  — small text under the item name
+   Optional category field: note — text under the category title
    ========================================================================= */
+
+/* Burgers that come with a choice of patty (Beef or Chicken).
+   Each choice lists its own optional add-ons — edit names and prices here.
+   NOTE: the Chicken Patty price below is a placeholder; set the real one. */
+const BURGER_PATTY_CHOICES = {
+  label: "Choose your patty *",
+  options: [
+    {
+      name: "Beef",
+      addons: [
+        { name: "Extra Beef Patty", price: 4000 },
+        { name: "Extra Cheese", price: 2000 }
+      ]
+    },
+    {
+      name: "Chicken",
+      addons: [
+        { name: "Extra Chicken Patty", price: 4000 },
+        { name: "Extra Cheese", price: 2000 }
+      ]
+    }
+  ]
+};
 
 const MENU_DATA = [
 
-  /* ----------------------------- BURGERS ----------------------------- */
   {
     id: "burgers",
     name: "Burgers",
     items: [
-      { name: "Classic Burger", price: 10000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
+      { name: "Classic Burger", price: 10000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce", choices: BURGER_PATTY_CHOICES },
       { name: "Crispy Chicken Burger", price: 15000, desc: "Kentucky Style Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Mayo, Smash Sauce" },
       { name: "Grilled Chicken Burger", price: 12000, desc: "Boneless Grilled Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
       { name: "Caramelized Burger", price: 14000, desc: "Beef Patty, Caramelized Onions, Cheddar Cheese, Tomato, Smash Sauce" },
-      { name: "Cheese Burger", price: 12000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
-      { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce" },
+      { name: "Cheese Burger", price: 12000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce", choices: BURGER_PATTY_CHOICES },
+      { name: "Sealed Burger", price: 15000, desc: "Beef/Chicken, Lettuce, Tomato, Onions, Cheddar Cheese, Smash Sauce", choices: BURGER_PATTY_CHOICES },
       { name: "Add-on: Beef Patty", price: 4000 },
       { name: "Add-on: Cheese", price: 2000 }
     ]
   },
 
-  /* ------------------------------ FRIES ------------------------------ */
   {
     id: "fries",
     name: "Fries",
@@ -40,7 +61,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ------------------------------ WINGS ------------------------------ */
   {
     id: "wings",
     name: "Wings",
@@ -51,7 +71,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ---------------------------- DRUM STICK --------------------------- */
   {
     id: "drum-stick",
     name: "Drum Stick",
@@ -63,7 +82,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ------------------------------- WRAP ------------------------------ */
   {
     id: "wrap",
     name: "Wrap",
@@ -72,7 +90,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ------------------------------- CHOMA ----------------------------- */
   {
     id: "choma",
     name: "Choma",
@@ -86,7 +103,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ------------------------------- SALAD ----------------------------- */
   {
     id: "salad",
     name: "Salad",
@@ -95,7 +111,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ---------------------------- FRESH JUICE -------------------------- */
   {
     id: "fresh-juice",
     name: "Fresh Juice",
@@ -114,7 +129,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ----------------------------- SMOOTHIES --------------------------- */
   {
     id: "smoothies",
     name: "Smoothies",
@@ -125,7 +139,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ---------------------------- MILKSHAKES --------------------------- */
   {
     id: "milkshakes",
     name: "Milkshakes",
@@ -142,7 +155,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ------------------------------ MOJITOS ---------------------------- */
   {
     id: "mojitos",
     name: "Mojitos",
@@ -156,7 +168,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ------------------------------ PLATTERS --------------------------- */
   {
     id: "platters",
     name: "Platters",
@@ -167,7 +178,6 @@ const MENU_DATA = [
     ]
   },
 
-  /* ------------------------------- SHISHA ---------------------------- */
   {
     id: "shisha",
     name: "Shisha",
@@ -199,17 +209,14 @@ const MENU_DATA = [
 
 
 /* =========================================================================
-   CART CONFIGURATION
+   CONFIGURATION
    ========================================================================= */
 
 const WHATSAPP_NUMBER = "255753005002";
 const RESTAURANT_NAME = "Smash House";
 const CART_STORAGE_KEY = "smashhouseCart";
 
-/* =========================================================================
-   DELIVERY AREAS AND FEES — EDIT THE AREA NAMES AND PRICES HERE
-   ========================================================================= */
-
+/* Delivery areas and fees — edit names and prices here */
 const DELIVERY_AREAS = [
   { name: "Town", fee: 2000 },
   { name: "Upanga", fee: 2000 },
@@ -217,21 +224,25 @@ const DELIVERY_AREAS = [
   { name: "Posta", fee: 2000 },
   { name: "Seaview/Ocean Road", fee: 3000 },
   { name: "Magomeni", fee: 5000 },
-  { name: "Ilala", fee: 7000 },
+  { name: "Ilala", fee: 7000 }
 ];
 
 /* "Other Area" has no fixed fee; the restaurant confirms it on WhatsApp. */
 const OTHER_AREA_VALUE = "other";
 
-const ORDER_TYPE_LABELS = { delivery: "Delivery", pickup: "Pickup" };
+const ORDER_TYPE_LABELS = {
+  dinein: "Dine in",
+  delivery: "Delivery",
+  pickup: "Pickup"
+};
+
+/* =========================================================================
+   STATE + HELPERS
+   ========================================================================= */
 
 let cart = [];
-let orderType = null; // "delivery" | "pickup" | null
+let orderType = null; // "dinein" | "delivery" | "pickup" | null
 let selectedDeliveryArea = "";
-let deliveryFee = 0;
-let customerNote = ""; // optional, for BOTH Delivery and Pickup
-
-/* ---------- Helpers ---------- */
 
 const $ = (id) => document.getElementById(id);
 
@@ -239,10 +250,10 @@ function formatPrice(n) {
   return "TSh " + Number(n).toLocaleString("en-US") + "/=";
 }
 
-function el(tag, className, html) {
+function el(tag, className, text) {
   const e = document.createElement(tag);
   if (className) e.className = className;
-  if (html !== undefined) e.innerHTML = html;
+  if (text !== undefined) e.textContent = text;
   return e;
 }
 
@@ -251,8 +262,9 @@ function val(id) {
   return e ? e.value.trim() : "";
 }
 
+
 /* =========================================================================
-   RENDER CATEGORY NAVIGATION
+   CATEGORY NAVIGATION
    ========================================================================= */
 
 function renderNav() {
@@ -260,12 +272,9 @@ function renderNav() {
   if (!nav) return;
 
   MENU_DATA.forEach((cat) => {
-    const btn = el("button", "nav-pill");
+    const btn = el("button", "nav-pill", cat.name);
     btn.type = "button";
-    btn.textContent = cat.name;
     btn.dataset.target = cat.id;
-    btn.setAttribute("role", "tab");
-    btn.setAttribute("aria-selected", "false");
 
     btn.addEventListener("click", () => {
       const target = $(cat.id);
@@ -280,9 +289,110 @@ function renderNav() {
   });
 }
 
+
 /* =========================================================================
-   RENDER MENU SECTIONS
+   MENU SECTIONS
    ========================================================================= */
+
+function buildAddToCartButton(cat, item) {
+  const btn = el("button", "add-cart-btn", "+ Add to Cart");
+  btn.type = "button";
+  btn.dataset.key = cat.id + "::" + item.name;
+  btn.dataset.name = item.name;
+  btn.dataset.price = item.price;
+  btn.dataset.label = btn.textContent;
+  btn.setAttribute("aria-label", "Add " + item.name + " to cart");
+  return btn;
+}
+
+/* Patty choice + optional add-ons for burgers that define `choices` */
+function buildChoiceBlock(cat, item, priceEl, addBtn) {
+  const cfg = item.choices;
+  const wrap = el("div", "item-choices");
+
+  const group = el("div", "choice-options");
+  group.setAttribute("role", "radiogroup");
+  group.setAttribute("aria-label", item.name + " patty");
+
+  const addonWrap = el("div", "addon-list");
+  addonWrap.hidden = true;
+
+  let selected = null;
+  const checked = new Set();
+
+  function refresh() {
+    const addons = selected ? selected.addons.filter((a) => checked.has(a.name)) : [];
+    const total = item.price + addons.reduce((sum, a) => sum + a.price, 0);
+
+    priceEl.textContent = formatPrice(total);
+    addBtn.disabled = !selected;
+
+    if (selected) {
+      addBtn.dataset.key = [cat.id, item.name, selected.name]
+        .concat(addons.map((a) => a.name))
+        .join("::");
+      addBtn.dataset.name =
+        item.name + " (" + selected.name + ")" + addons.map((a) => " + " + a.name).join("");
+      addBtn.dataset.price = total;
+    }
+  }
+
+  function renderAddons() {
+    addonWrap.innerHTML = "";
+    checked.clear();
+
+    if (!selected || !selected.addons.length) {
+      addonWrap.hidden = true;
+      return;
+    }
+
+    addonWrap.hidden = false;
+    addonWrap.appendChild(el("p", "choice-label", "Add-ons (optional)"));
+
+    selected.addons.forEach((a) => {
+      const row = el("label", "addon-option");
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.addEventListener("change", () => {
+        if (cb.checked) checked.add(a.name);
+        else checked.delete(a.name);
+        refresh();
+      });
+      row.appendChild(cb);
+      row.appendChild(el("span", "addon-name", a.name));
+      row.appendChild(el("span", "addon-price", "+ " + formatPrice(a.price)));
+      addonWrap.appendChild(row);
+    });
+  }
+
+  cfg.options.forEach((opt) => {
+    const btn = el("button", "choice-btn", opt.name);
+    btn.type = "button";
+    btn.setAttribute("role", "radio");
+    btn.setAttribute("aria-checked", "false");
+
+    btn.addEventListener("click", () => {
+      /* Tapping the chosen patty again unselects it; tapping the other one switches */
+      selected = selected === opt ? null : opt;
+      group.querySelectorAll(".choice-btn").forEach((b) => {
+        const on = selected === opt && b === btn;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-checked", on ? "true" : "false");
+      });
+      renderAddons();
+      refresh();
+    });
+
+    group.appendChild(btn);
+  });
+
+  wrap.appendChild(el("p", "choice-label", cfg.label));
+  wrap.appendChild(group);
+  wrap.appendChild(addonWrap);
+
+  refresh();
+  return wrap;
+}
 
 function renderMenu() {
   const main = $("menu-content");
@@ -293,9 +403,8 @@ function renderMenu() {
     section.id = cat.id;
     section.setAttribute("aria-labelledby", cat.id + "-heading");
 
-    const heading = el("h2", "category-heading");
+    const heading = el("h2", "category-heading", cat.name);
     heading.id = cat.id + "-heading";
-    heading.textContent = cat.name;
     section.appendChild(heading);
 
     if (cat.note) section.appendChild(el("p", "category-note", cat.note));
@@ -309,27 +418,17 @@ function renderMenu() {
 
       info.appendChild(el("h3", "menu-item-name", item.name));
       if (item.desc) info.appendChild(el("p", "menu-item-desc", item.desc));
+
+      const priceEl = el("div", "menu-item-price", formatPrice(item.price));
       top.appendChild(info);
+      top.appendChild(priceEl);
 
+      const addBtn = buildAddToCartButton(cat, item);
       const actions = el("div", "menu-item-actions");
-
-      if (cat.sizeLabels) {
-        const priceWrap = el("div", "menu-item-price menu-item-price--dual");
-        [[cat.sizeLabels[0], item.small], [cat.sizeLabels[1], item.large]].forEach(([label, price]) => {
-          const opt = el("div", "price-option");
-          opt.innerHTML =
-            '<span class="price-option-label">' + label + "</span>" +
-            '<span class="price-option-value">' + formatPrice(price) + "</span>";
-          priceWrap.appendChild(opt);
-          actions.appendChild(buildAddToCartButton(cat, item, label, price));
-        });
-        top.appendChild(priceWrap);
-      } else {
-        top.appendChild(el("div", "menu-item-price", formatPrice(item.price)));
-        actions.appendChild(buildAddToCartButton(cat, item, null, item.price));
-      }
+      actions.appendChild(addBtn);
 
       row.appendChild(top);
+      if (item.choices) row.appendChild(buildChoiceBlock(cat, item, priceEl, addBtn));
       row.appendChild(actions);
       list.appendChild(row);
     });
@@ -339,25 +438,6 @@ function renderMenu() {
   });
 }
 
-/* =========================================================================
-   BUILD ADD TO CART BUTTONS
-   ========================================================================= */
-
-function buildCartKey(catId, itemName, sizeLabel) {
-  return sizeLabel ? catId + "::" + itemName + "::" + sizeLabel : catId + "::" + itemName;
-}
-
-function buildAddToCartButton(cat, item, sizeLabel, price) {
-  const displayName = sizeLabel ? item.name + " (" + sizeLabel + ")" : item.name;
-  const btn = el("button", "add-cart-btn");
-  btn.type = "button";
-  btn.dataset.key = buildCartKey(cat.id, item.name, sizeLabel);
-  btn.dataset.name = displayName;
-  btn.dataset.price = price;
-  btn.textContent = sizeLabel ? "+ Add " + sizeLabel : "+ Add to Cart";
-  btn.setAttribute("aria-label", "Add " + displayName + " to cart");
-  return btn;
-}
 
 /* =========================================================================
    CART LOGIC
@@ -437,10 +517,6 @@ function clearCart() {
   resetCart();
 }
 
-/* =========================================================================
-   TOTALS
-   ========================================================================= */
-
 function calculateCartTotal() {
   return cart.reduce((sum, i) => sum + i.price * i.qty, 0);
 }
@@ -449,9 +525,34 @@ function calculateCartCount() {
   return cart.reduce((sum, i) => sum + i.qty, 0);
 }
 
+
 /* =========================================================================
-   DELIVERY AREA LOGIC
+   DELIVERY AREAS
    ========================================================================= */
+
+/* Fills the delivery area dropdown from DELIVERY_AREAS */
+function populateDeliveryAreas() {
+  const select = $("customer-delivery-area");
+  if (!select) return;
+
+  select.innerHTML = "";
+
+  const placeholder = el("option", "", "Select your delivery area *");
+  placeholder.value = "";
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  select.appendChild(placeholder);
+
+  DELIVERY_AREAS.forEach((area) => {
+    const option = el("option", "", area.name + " — " + formatPrice(area.fee));
+    option.value = area.name;
+    select.appendChild(option);
+  });
+
+  const other = el("option", "", "Other Area");
+  other.value = OTHER_AREA_VALUE;
+  select.appendChild(other);
+}
 
 function getSelectedDeliveryFee() {
   if (orderType !== "delivery") return 0;
@@ -460,144 +561,41 @@ function getSelectedDeliveryFee() {
   return area ? Number(area.fee) : 0;
 }
 
-function updateDeliveryFee() {
-  deliveryFee = getSelectedDeliveryFee();
-  updateCartTotalDisplay();
-  updateWhatsAppButtonState();
+function isFeeToBeConfirmed() {
+  return orderType === "delivery" && selectedDeliveryArea === OTHER_AREA_VALUE;
+}
+
+function resetDeliveryFields() {
+  selectedDeliveryArea = "";
+  const select = $("customer-delivery-area");
+  const otherInput = $("customer-other-area");
+  if (select) select.selectedIndex = 0;
+  if (otherInput) otherInput.value = "";
 }
 
 function handleDeliveryAreaChange(value) {
   selectedDeliveryArea = value || "";
-
-  const otherAreaWrap = $("other-area-wrap");
-  const otherAreaInput = $("customer-other-area");
-
-  if (otherAreaWrap) otherAreaWrap.hidden = selectedDeliveryArea !== OTHER_AREA_VALUE;
-  if (otherAreaInput && selectedDeliveryArea !== OTHER_AREA_VALUE) otherAreaInput.value = "";
-
-  updateDeliveryFee();
+  if (selectedDeliveryArea !== OTHER_AREA_VALUE) {
+    const otherInput = $("customer-other-area");
+    if (otherInput) otherInput.value = "";
+  }
+  updateFieldVisibility();
+  updateCartTotalDisplay();
+  updateWhatsAppButtonState();
 }
 
-/* =========================================================================
-   CREATE DELIVERY AREA + NOTES FIELDS
-   ========================================================================= */
-
-function createDeliveryAreaFields() {
-  const fieldsWrap = $("cart-customer-fields");
-  const addressInput = $("customer-address");
-  if (!fieldsWrap || !addressInput) return;
-
-  /* Prevent duplicate creation */
-  if ($("customer-notes-wrap") || $("delivery-area-wrap")) return;
-
-  /* ---------- Additional notes (Delivery AND Pickup) ---------- */
-
-  const notesWrap = el("div", "cart-notes-wrap");
-  notesWrap.id = "customer-notes-wrap";
-
-  const notesLabel = el("label", "cart-input-label");
-  notesLabel.htmlFor = "customer-notes";
-  notesLabel.textContent = "Additional notes / special instructions";
-
-  const notesInput = el("textarea", "cart-input cart-textarea");
-  notesInput.id = "customer-notes";
-  notesInput.placeholder = "Tell us how you would like your order...";
-  notesInput.setAttribute("aria-label", "Additional notes or special instructions");
-  notesInput.rows = 3;
-  notesInput.addEventListener("input", () => {
-    customerNote = notesInput.value.trim();
-    updateWhatsAppButtonState();
-  });
-
-  notesWrap.appendChild(notesLabel);
-  notesWrap.appendChild(notesInput);
-
-  const contactInput = $("customer-contact");
-  if (contactInput) contactInput.insertAdjacentElement("afterend", notesWrap);
-  else fieldsWrap.appendChild(notesWrap);
-
-  /* ---------- Delivery area ---------- */
-
-  const areaWrap = el("div", "cart-delivery-area-wrap");
-  areaWrap.id = "delivery-area-wrap";
-
-  const areaLabel = el("label", "cart-input-label");
-  areaLabel.htmlFor = "customer-delivery-area";
-  areaLabel.textContent = "Delivery area *";
-
-  const areaSelect = el("select", "cart-input cart-select");
-  areaSelect.id = "customer-delivery-area";
-  areaSelect.setAttribute("aria-label", "Delivery area (required)");
-
-  const defaultOption = el("option");
-  defaultOption.value = "";
-  defaultOption.textContent = "Select your delivery area *";
-  defaultOption.disabled = true;
-  defaultOption.selected = true;
-  areaSelect.appendChild(defaultOption);
-
-  DELIVERY_AREAS.forEach((area) => {
-    const option = el("option");
-    option.value = area.name;
-    option.textContent = area.name + " — " + formatPrice(area.fee);
-    areaSelect.appendChild(option);
-  });
-
-  const otherOption = el("option");
-  otherOption.value = OTHER_AREA_VALUE;
-  otherOption.textContent = "Other Area";
-  areaSelect.appendChild(otherOption);
-
-  areaSelect.addEventListener("change", () => handleDeliveryAreaChange(areaSelect.value));
-
-  areaWrap.appendChild(areaLabel);
-  areaWrap.appendChild(areaSelect);
-  fieldsWrap.insertBefore(areaWrap, addressInput);
-
-  /* ---------- Other area ---------- */
-
-  const otherAreaWrap = el("div", "cart-other-area-wrap");
-  otherAreaWrap.id = "other-area-wrap";
-  otherAreaWrap.hidden = true;
-
-  const otherAreaLabel = el("label", "cart-input-label");
-  otherAreaLabel.htmlFor = "customer-other-area";
-  otherAreaLabel.textContent = "Enter your area *";
-
-  const otherAreaInput = el("input", "cart-input");
-  otherAreaInput.type = "text";
-  otherAreaInput.id = "customer-other-area";
-  otherAreaInput.placeholder = "Enter your area *";
-  otherAreaInput.setAttribute("aria-label", "Enter your area (required)");
-  otherAreaInput.addEventListener("input", updateWhatsAppButtonState);
-
-  otherAreaWrap.appendChild(otherAreaLabel);
-  otherAreaWrap.appendChild(otherAreaInput);
-  fieldsWrap.insertBefore(otherAreaWrap, addressInput);
-}
 
 /* =========================================================================
-   ORDER TYPE — DELIVERY / PICKUP ONLY
+   ORDER TYPE — DINE IN / DELIVERY / PICKUP
    ========================================================================= */
 
 function setOrderType(type) {
-  if (type !== "delivery" && type !== "pickup") return;
+  if (!ORDER_TYPE_LABELS[type]) return;
 
   orderType = type;
 
-  /* Reset delivery area when switching to pickup */
-  if (type === "pickup") {
-    selectedDeliveryArea = "";
-    deliveryFee = 0;
-
-    const areaSelect = $("customer-delivery-area");
-    const otherAreaInput = $("customer-other-area");
-    const otherAreaWrap = $("other-area-wrap");
-
-    if (areaSelect) areaSelect.selectedIndex = 0;
-    if (otherAreaInput) otherAreaInput.value = "";
-    if (otherAreaWrap) otherAreaWrap.hidden = true;
-  }
+  /* Delivery area only matters for Delivery */
+  if (type !== "delivery") resetDeliveryFields();
 
   document.querySelectorAll(".order-type-btn").forEach((btn) => {
     const isActive = btn.dataset.type === type;
@@ -609,53 +607,64 @@ function setOrderType(type) {
   updateCart();
 }
 
-/* =========================================================================
-   CUSTOMER FIELD VISIBILITY
-   ========================================================================= */
-
+/* Shows only the fields that belong to the chosen order type */
 function updateFieldVisibility() {
   const chosen = Boolean(orderType);
-  const isDelivery = orderType === "delivery";
-  const showOther = isDelivery && selectedDeliveryArea === OTHER_AREA_VALUE;
-
-  const setHidden = (id, hidden) => {
-    const e = $(id);
-    if (e) e.hidden = hidden;
-  };
 
   const hint = $("order-type-hint");
   if (hint) hint.classList.toggle("is-hidden", chosen);
 
-  setHidden("cart-customer-fields", !chosen);
-  setHidden("customer-name", !chosen);
-  setHidden("customer-contact", !chosen);
-  setHidden("customer-address", !isDelivery);
-  setHidden("delivery-area-wrap", !isDelivery);
-  setHidden("other-area-wrap", !showOther);
-  setHidden("customer-notes-wrap", !chosen); // notes: Delivery AND Pickup
+  const fields = $("cart-customer-fields");
+  if (fields) fields.hidden = !chosen;
+
+  document.querySelectorAll("#cart-customer-fields [data-types]").forEach((e) => {
+    e.hidden = !chosen || !e.dataset.types.split(" ").includes(orderType);
+  });
+
+  /* "Enter your area" only appears when "Other Area" is selected */
+  const otherWrap = $("other-area-wrap");
+  if (otherWrap) otherWrap.hidden = !isFeeToBeConfirmed();
+
+  /* Food total + delivery fee lines are only for Delivery */
+  const feeLines = $("cart-fee-lines");
+  if (feeLines) feeLines.hidden = orderType !== "delivery";
 }
 
+
 /* =========================================================================
-   REQUIRED-FIELD VALIDATION
+   VALIDATION
    ========================================================================= */
 
 function isOrderFormValid() {
   if (cart.length === 0) return false;
-  if (orderType !== "delivery" && orderType !== "pickup") return false;
+
+  /* Name + phone are needed for every order type */
   if (!val("customer-name") || !val("customer-contact")) return false;
 
-  if (orderType === "delivery") {
-    const areaSelect = $("customer-delivery-area");
-    if (!areaSelect || !areaSelect.value) return false;
-    if (areaSelect.value === OTHER_AREA_VALUE && !val("customer-other-area")) return false;
-    if (!val("customer-address")) return false;
-  }
+  switch (orderType) {
+    case "dinein": {
+      const guests = Number(val("customer-guests"));
+      return Boolean(val("customer-arrival")) && Number.isInteger(guests) && guests >= 1;
+    }
 
-  return true;
+    case "pickup":
+      return true;
+
+    case "delivery": {
+      const area = val("customer-delivery-area");
+      if (!area) return false;
+      if (area === OTHER_AREA_VALUE && !val("customer-other-area")) return false;
+      return Boolean(val("customer-address"));
+    }
+
+    default:
+      return false;
+  }
 }
 
+
 /* =========================================================================
-   RENDERING
+   CART RENDERING
    ========================================================================= */
 
 function updateCart() {
@@ -681,46 +690,20 @@ function updateCartCountBadge() {
 
 function updateCartTotalDisplay() {
   const foodTotal = calculateCartTotal();
-  deliveryFee = getSelectedDeliveryFee();
-  const total = foodTotal + deliveryFee;
-  const feeTbc = orderType === "delivery" && selectedDeliveryArea === OTHER_AREA_VALUE;
+  const fee = getSelectedDeliveryFee();
+  const feeTbc = isFeeToBeConfirmed();
 
-  const totalEl = $("cart-total-value");
-  if (!totalEl) return;
+  const setText = (id, text) => {
+    const e = $(id);
+    if (e) e.textContent = text;
+  };
 
-  const totalRow = totalEl.closest(".cart-total-row");
-  if (!totalRow) {
-    totalEl.textContent = formatPrice(total);
-    return;
-  }
-
-  /* Replace the old simple total display only once. */
-  if (!$("cart-food-total-value")) {
-    totalRow.innerHTML = `
-      <div class="cart-total-breakdown">
-        <div class="cart-total-line">
-          <span>Food Total</span>
-          <span id="cart-food-total-value">TSh 0/=</span>
-        </div>
-        <div class="cart-total-line">
-          <span>Delivery Fee</span>
-          <span id="cart-delivery-fee-value">TSh 0/=</span>
-        </div>
-        <div class="cart-total-line cart-grand-total">
-          <span>Total</span>
-          <span id="cart-total-value">TSh 0/=</span>
-        </div>
-      </div>
-    `;
-  }
-
-  const foodTotalEl = $("cart-food-total-value");
-  const deliveryFeeEl = $("cart-delivery-fee-value");
-  const grandTotalEl = $("cart-total-value");
-
-  if (foodTotalEl) foodTotalEl.textContent = formatPrice(foodTotal);
-  if (deliveryFeeEl) deliveryFeeEl.textContent = feeTbc ? "To be confirmed" : formatPrice(deliveryFee);
-  if (grandTotalEl) grandTotalEl.textContent = feeTbc ? formatPrice(foodTotal) + " + fee" : formatPrice(total);
+  setText("cart-food-total-value", formatPrice(foodTotal));
+  setText("cart-delivery-fee-value", feeTbc ? "To be confirmed" : formatPrice(fee));
+  setText(
+    "cart-total-value",
+    feeTbc ? formatPrice(foodTotal) + " + fee" : formatPrice(foodTotal + fee)
+  );
 }
 
 function updateWhatsAppButtonState() {
@@ -792,6 +775,7 @@ function renderCartItems() {
   });
 }
 
+
 /* =========================================================================
    DRAWER OPEN / CLOSE
    ========================================================================= */
@@ -826,15 +810,14 @@ function closeCart() {
   }, 250);
 }
 
+
 /* =========================================================================
-   RESET ORDER FORM
+   RESET ORDER FORM (after sending)
    ========================================================================= */
 
 function resetOrderForm() {
   orderType = null;
   selectedDeliveryArea = "";
-  deliveryFee = 0;
-  customerNote = "";
 
   document.querySelectorAll(".order-type-btn").forEach((btn) => {
     btn.classList.remove("active");
@@ -842,11 +825,13 @@ function resetOrderForm() {
   });
 
   [
+    "customer-arrival",
+    "customer-guests",
     "customer-name",
     "customer-contact",
     "customer-address",
     "customer-other-area",
-    "customer-notes",
+    "customer-notes"
   ].forEach((id) => {
     const input = $(id);
     if (input) input.value = "";
@@ -855,13 +840,11 @@ function resetOrderForm() {
   const areaSelect = $("customer-delivery-area");
   if (areaSelect) areaSelect.selectedIndex = 0;
 
-  const otherAreaWrap = $("other-area-wrap");
-  if (otherAreaWrap) otherAreaWrap.hidden = true;
-
   updateFieldVisibility();
   updateCartTotalDisplay();
   updateWhatsAppButtonState();
 }
+
 
 /* =========================================================================
    WHATSAPP ORDER
@@ -870,19 +853,13 @@ function resetOrderForm() {
 function sendOrderToWhatsApp() {
   if (!isOrderFormValid()) return;
 
-  const customerName = val("customer-name");
-  const customerContact = val("customer-contact");
-  const customerAddress = val("customer-address");
-  const additionalNotes = val("customer-notes");
-  const areaSelect = $("customer-delivery-area");
-  const selectedArea = areaSelect ? areaSelect.value : "";
-  const manualArea = val("customer-other-area");
-
-  const foodTotal = calculateCartTotal();
-  const finalDeliveryFee = getSelectedDeliveryFee();
-  const finalTotal = foodTotal + finalDeliveryFee;
   const isDelivery = orderType === "delivery";
-  const feeTbc = isDelivery && selectedArea === OTHER_AREA_VALUE;
+  const foodTotal = calculateCartTotal();
+  const fee = getSelectedDeliveryFee();
+  const feeTbc = isFeeToBeConfirmed();
+
+  const name = val("customer-name");
+  const notes = val("customer-notes");
 
   const lines = [];
 
@@ -891,41 +868,48 @@ function sendOrderToWhatsApp() {
   lines.push("I would like to place an order:");
   lines.push("");
 
-  /* ---------- Ordered items ---------- */
+  /* Ordered items */
   cart.forEach((item) => {
     lines.push(item.qty + " × " + item.name + " — " + formatPrice(item.price * item.qty));
   });
 
   lines.push("");
 
-  /* ---------- Additional notes ---------- */
-  if (additionalNotes) {
-    lines.push("Additional Notes: " + additionalNotes);
+  /* Additional notes */
+  if (notes) {
+    lines.push("Additional Notes: " + notes);
     lines.push("");
   }
 
-  /* ---------- Customer / order details ---------- */
-  lines.push("Order type: " + (ORDER_TYPE_LABELS[orderType] || orderType));
-  lines.push("Name: " + customerName);
-  lines.push("Contact: " + customerContact);
+  /* Order details */
+  lines.push("Order type: " + ORDER_TYPE_LABELS[orderType]);
 
-  if (isDelivery) {
-    lines.push("Delivery Area: " + (feeTbc ? manualArea : selectedArea));
-    lines.push("Delivery address: " + customerAddress);
+  lines.push("Name: " + name);
+  lines.push("Contact: " + val("customer-contact"));
+
+  if (orderType === "dinein") {
+    lines.push("Time of arrival: " + val("customer-arrival"));
+    lines.push("Number of people: " + val("customer-guests"));
   }
 
-  /* ---------- Totals (delivery fee is shown once, here) ---------- */
-  lines.push("");
-  lines.push("Food Total: " + formatPrice(foodTotal));
-  lines.push(
-    "Delivery Fee: " +
-      (isDelivery ? (feeTbc ? "To be confirmed" : formatPrice(finalDeliveryFee)) : formatPrice(0))
-  );
+  if (isDelivery) {
+    lines.push("Delivery Area: " + (feeTbc ? val("customer-other-area") : val("customer-delivery-area")));
+    lines.push("Delivery address: " + val("customer-address"));
+  }
 
-  if (feeTbc) {
-    lines.push("Total: " + formatPrice(foodTotal) + " + delivery fee to be confirmed");
+  /* Totals */
+  lines.push("");
+
+  if (isDelivery) {
+    lines.push("Food Total: " + formatPrice(foodTotal));
+    lines.push("Delivery Fee: " + (feeTbc ? "To be confirmed" : formatPrice(fee)));
+    lines.push(
+      feeTbc
+        ? "Total: " + formatPrice(foodTotal) + " + delivery fee to be confirmed"
+        : "Total: " + formatPrice(foodTotal + fee)
+    );
   } else {
-    lines.push("Total: " + formatPrice(finalTotal));
+    lines.push("Total: " + formatPrice(foodTotal));
   }
 
   lines.push("");
@@ -941,6 +925,7 @@ function sendOrderToWhatsApp() {
   closeCart();
 }
 
+
 /* =========================================================================
    CART UI EVENTS
    ========================================================================= */
@@ -951,10 +936,7 @@ function setupCartUI() {
   const orderTypeOptions = $("order-type-options");
   const cartFooter = $("cart-footer");
 
-  /* ---------- Create delivery area + notes fields ---------- */
-  createDeliveryAreaFields();
-
-  /* ---------- Add-to-cart clicks ---------- */
+  /* Add-to-cart clicks */
   if (menuMain) {
     menuMain.addEventListener("click", (e) => {
       const btn = e.target.closest(".add-cart-btn");
@@ -962,18 +944,18 @@ function setupCartUI() {
 
       addToCart(btn.dataset.key, btn.dataset.name, Number(btn.dataset.price));
 
-      const originalText = btn.textContent;
+      clearTimeout(btn._resetTimer);
       btn.classList.add("added");
       btn.textContent = "Added ✓";
 
-      setTimeout(() => {
+      btn._resetTimer = setTimeout(() => {
         btn.classList.remove("added");
-        btn.textContent = originalText;
+        btn.textContent = btn.dataset.label;
       }, 900);
     });
   }
 
-  /* ---------- Cart drawer + buttons ---------- */
+  /* Drawer + buttons */
   const bind = (id, handler) => {
     const e = $(id);
     if (e) e.addEventListener("click", handler);
@@ -986,16 +968,15 @@ function setupCartUI() {
   bind("clear-cart-btn", clearCart);
   bind("whatsapp-order-btn", sendOrderToWhatsApp);
 
-  /* ---------- Delivery / Pickup selection ---------- */
+  /* Dine in / Delivery / Pickup */
   if (orderTypeOptions) {
     orderTypeOptions.addEventListener("click", (e) => {
       const btn = e.target.closest(".order-type-btn");
-      if (!btn) return;
-      setOrderType(btn.dataset.type);
+      if (btn) setOrderType(btn.dataset.type);
     });
   }
 
-  /* ---------- Customer field validation ---------- */
+  /* Re-check required fields as the customer types */
   if (cartFooter) {
     cartFooter.addEventListener("input", (e) => {
       if (e.target.classList && e.target.classList.contains("cart-input")) {
@@ -1004,11 +985,13 @@ function setupCartUI() {
     });
 
     cartFooter.addEventListener("change", (e) => {
-      if (e.target.id === "customer-delivery-area") updateWhatsAppButtonState();
+      if (e.target.id === "customer-delivery-area") {
+        handleDeliveryAreaChange(e.target.value);
+      }
     });
   }
 
-  /* ---------- Quantity controls ---------- */
+  /* Quantity controls */
   if (cartItemsWrap) {
     cartItemsWrap.addEventListener("click", (e) => {
       const btn = e.target.closest("button[data-action]");
@@ -1022,13 +1005,14 @@ function setupCartUI() {
     });
   }
 
-  /* ---------- Escape key closes cart ---------- */
+  /* Escape closes the cart */
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     const drawer = $("cart-drawer");
     if (drawer && !drawer.hidden) closeCart();
   });
 }
+
 
 /* =========================================================================
    ACTIVE CATEGORY HIGHLIGHTING
@@ -1043,10 +1027,12 @@ function setupActiveTracking() {
     pills.forEach((p) => {
       const isActive = p.dataset.target === id;
       p.classList.toggle("active", isActive);
-      p.setAttribute("aria-selected", isActive ? "true" : "false");
 
       if (isActive) {
+        p.setAttribute("aria-current", "true");
         p.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      } else {
+        p.removeAttribute("aria-current");
       }
     });
   }
@@ -1061,8 +1047,8 @@ function setupActiveTracking() {
     },
     {
       root: null,
-      rootMargin: `-${navHeight + 20}px 0px -70% 0px`,
-      threshold: 0,
+      rootMargin: "-" + (navHeight + 20) + "px 0px -70% 0px",
+      threshold: 0
     }
   );
 
@@ -1072,6 +1058,7 @@ function setupActiveTracking() {
 
   if (sections[0]) setActive(sections[0].id);
 }
+
 
 /* =========================================================================
    INIT
@@ -1084,6 +1071,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cart = loadCart();
 
+  populateDeliveryAreas();
   setupCartUI();
 
   updateFieldVisibility();
