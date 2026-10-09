@@ -182,16 +182,16 @@
             </div>
           </div>
 
-          <!-- Delivery only (area options are filled in by script2.js) -->
-        
+          <!-- Delivery only: area (typed by the customer) + address.
+               The delivery fee is confirmed by the restaurant on WhatsApp. -->
           <div id="other-area-wrap" data-types="delivery" hidden>
-            <label class="cart-input-label" for="customer-other-area">Enter your area *</label>
+            <label class="cart-input-label" for="customer-other-area">Delivery area *</label>
             <input
               type="text"
               id="customer-other-area"
               class="cart-input"
-              placeholder="Enter your area *"
-              aria-label="Enter your area (required)"
+              placeholder="e.g. Mikocheni"
+              aria-label="Delivery area (required)"
             />
           </div>
 
@@ -233,7 +233,7 @@
           </div>
           <div class="cart-total-line">
             <span>Delivery Fee</span>
-            <span id="cart-delivery-fee-value">TSh 0/=</span>
+            <span id="cart-delivery-fee-value">To be confirmed</span>
           </div>
         </div>
 
