@@ -219,20 +219,6 @@ const WHATSAPP_NUMBER = "255753005002";
 const RESTAURANT_NAME = "Smash House";
 const CART_STORAGE_KEY = "smashhouseCart";
 
-/* Delivery areas and fees — edit names and prices here */
-const DELIVERY_AREAS = [
-  { name: "Town", fee: 2000 },
-  { name: "Upanga", fee: 2000 },
-  { name: "Kariakoo", fee: 2000 },
-  { name: "Posta", fee: 2000 },
-  { name: "Seaview/Ocean Road", fee: 3000 },
-  { name: "Magomeni", fee: 5000 },
-  { name: "Ilala", fee: 7000 }
-];
-
-/* "Other Area" has no fixed fee; the restaurant confirms it on WhatsApp. */
-const OTHER_AREA_VALUE = "other";
-
 const ORDER_TYPE_LABELS = {
   dinein: "Dine in",
   delivery: "Delivery",
@@ -245,7 +231,6 @@ const ORDER_TYPE_LABELS = {
 
 let cart = [];
 let orderType = null; // "dinein" | "delivery" | "pickup" | null
-let selectedDeliveryArea = "";
 
 const $ = (id) => document.getElementById(id);
 
@@ -539,61 +524,18 @@ function calculateCartCount() {
 
 
 /* =========================================================================
-   DELIVERY AREAS
+   DELIVERY
+   The delivery fee is always confirmed by the restaurant on WhatsApp.
+   The customer just types their area and address.
    ========================================================================= */
 
-/* Fills the delivery area dropdown from DELIVERY_AREAS */
-function populateDeliveryAreas() {
-  const select = $("customer-delivery-area");
-  if (!select) return;
-
-  select.innerHTML = "";
-
-  const placeholder = el("option", "", "Select your delivery area *");
-  placeholder.value = "";
-  placeholder.disabled = true;
-  placeholder.selected = true;
-  select.appendChild(placeholder);
-
-  DELIVERY_AREAS.forEach((area) => {
-    const option = el("option", "", area.name + " — " + formatPrice(area.fee));
-    option.value = area.name;
-    select.appendChild(option);
-  });
-
-  const other = el("option", "", "Other Area");
-  other.value = OTHER_AREA_VALUE;
-  select.appendChild(other);
-}
-
-function getSelectedDeliveryFee() {
-  if (orderType !== "delivery") return 0;
-  if (!selectedDeliveryArea || selectedDeliveryArea === OTHER_AREA_VALUE) return 0;
-  const area = DELIVERY_AREAS.find((a) => a.name === selectedDeliveryArea);
-  return area ? Number(area.fee) : 0;
-}
-
 function isFeeToBeConfirmed() {
-  return orderType === "delivery" && selectedDeliveryArea === OTHER_AREA_VALUE;
+  return orderType === "delivery";
 }
 
 function resetDeliveryFields() {
-  selectedDeliveryArea = "";
-  const select = $("customer-delivery-area");
-  const otherInput = $("customer-other-area");
-  if (select) select.selectedIndex = 0;
-  if (otherInput) otherInput.value = "";
-}
-
-function handleDeliveryAreaChange(value) {
-  selectedDeliveryArea = value || "";
-  if (selectedDeliveryArea !== OTHER_AREA_VALUE) {
-    const otherInput = $("customer-other-area");
-    if (otherInput) otherInput.value = "";
-  }
-  updateFieldVisibility();
-  updateCartTotalDisplay();
-  updateWhatsAppButtonState();
+  const areaInput = $("customer-other-area");
+  if (areaInput) areaInput.value = "";
 }
 
 
@@ -633,9 +575,9 @@ function updateFieldVisibility() {
     e.hidden = !chosen || !e.dataset.types.split(" ").includes(orderType);
   });
 
-  /* "Enter your area" only appears when "Other Area" is selected */
+  /* Area input shows for every delivery order */
   const otherWrap = $("other-area-wrap");
-  if (otherWrap) otherWrap.hidden = !isFeeToBeConfirmed();
+  if (otherWrap) otherWrap.hidden = orderType !== "delivery";
 
   /* Food total + delivery fee lines are only for Delivery */
   const feeLines = $("cart-fee-lines");
@@ -662,12 +604,8 @@ function isOrderFormValid() {
     case "pickup":
       return true;
 
-    case "delivery": {
-      const area = val("customer-delivery-area");
-      if (!area) return false;
-      if (area === OTHER_AREA_VALUE && !val("customer-other-area")) return false;
-      return Boolean(val("customer-address"));
-    }
+    case "delivery":
+      return Boolean(val("customer-other-area")) && Boolean(val("customer-address"));
 
     default:
       return false;
@@ -702,7 +640,6 @@ function updateCartCountBadge() {
 
 function updateCartTotalDisplay() {
   const foodTotal = calculateCartTotal();
-  const fee = getSelectedDeliveryFee();
   const feeTbc = isFeeToBeConfirmed();
 
   const setText = (id, text) => {
@@ -711,10 +648,10 @@ function updateCartTotalDisplay() {
   };
 
   setText("cart-food-total-value", formatPrice(foodTotal));
-  setText("cart-delivery-fee-value", feeTbc ? "To be confirmed" : formatPrice(fee));
+  setText("cart-delivery-fee-value", "To be confirmed");
   setText(
     "cart-total-value",
-    feeTbc ? formatPrice(foodTotal) + " + fee" : formatPrice(foodTotal + fee)
+    feeTbc ? formatPrice(foodTotal) + " + fee" : formatPrice(foodTotal)
   );
 }
 
@@ -829,7 +766,6 @@ function closeCart() {
 
 function resetOrderForm() {
   orderType = null;
-  selectedDeliveryArea = "";
 
   document.querySelectorAll(".order-type-btn").forEach((btn) => {
     btn.classList.remove("active");
@@ -849,9 +785,6 @@ function resetOrderForm() {
     if (input) input.value = "";
   });
 
-  const areaSelect = $("customer-delivery-area");
-  if (areaSelect) areaSelect.selectedIndex = 0;
-
   updateFieldVisibility();
   updateCartTotalDisplay();
   updateWhatsAppButtonState();
@@ -867,8 +800,6 @@ function sendOrderToWhatsApp() {
 
   const isDelivery = orderType === "delivery";
   const foodTotal = calculateCartTotal();
-  const fee = getSelectedDeliveryFee();
-  const feeTbc = isFeeToBeConfirmed();
 
   const name = val("customer-name");
   const notes = val("customer-notes");
@@ -905,7 +836,7 @@ function sendOrderToWhatsApp() {
   }
 
   if (isDelivery) {
-    lines.push("Delivery Area: " + (feeTbc ? val("customer-other-area") : val("customer-delivery-area")));
+    lines.push("Delivery Area: " + val("customer-other-area"));
     lines.push("Delivery address: " + val("customer-address"));
   }
 
@@ -914,12 +845,8 @@ function sendOrderToWhatsApp() {
 
   if (isDelivery) {
     lines.push("Food Total: " + formatPrice(foodTotal));
-    lines.push("Delivery Fee: " + (feeTbc ? "To be confirmed" : formatPrice(fee)));
-    lines.push(
-      feeTbc
-        ? "Total: " + formatPrice(foodTotal) + " + delivery fee to be confirmed"
-        : "Total: " + formatPrice(foodTotal + fee)
-    );
+    lines.push("Delivery Fee: To be confirmed");
+    lines.push("Total: " + formatPrice(foodTotal) + " + delivery fee to be confirmed");
   } else {
     lines.push("Total: " + formatPrice(foodTotal));
   }
@@ -993,12 +920,6 @@ function setupCartUI() {
     cartFooter.addEventListener("input", (e) => {
       if (e.target.classList && e.target.classList.contains("cart-input")) {
         updateWhatsAppButtonState();
-      }
-    });
-
-    cartFooter.addEventListener("change", (e) => {
-      if (e.target.id === "customer-delivery-area") {
-        handleDeliveryAreaChange(e.target.value);
       }
     });
   }
@@ -1083,7 +1004,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cart = loadCart();
 
-  populateDeliveryAreas();
   setupCartUI();
 
   updateFieldVisibility();
